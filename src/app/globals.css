@@ -1,0 +1,641 @@
+@import "tailwindcss";
+
+/* Local Nexa trial files are used only for logo preview; see the bundled license. */
+@font-face {
+  font-family: "Nexa Trial";
+  src: url("/fonts/nexa-preview/Nexa-Trial-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nexa Trial";
+  src: url("/fonts/nexa-preview/Nexa-Trial-Thin.otf") format("opentype");
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nexa Trial";
+  src: url("/fonts/nexa-preview/Nexa-Trial-ExtraLight.otf") format("opentype");
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nexa Trial";
+  src: url("/fonts/nexa-preview/Nexa-Trial-Light.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nexa Trial";
+  src: url("/fonts/nexa-preview/Nexa-Trial-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nexa Trial";
+  src: url("/fonts/nexa-preview/Nexa-Trial-Book.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nexa Trial";
+  src: url("/fonts/nexa-preview/Nexa-Trial-ExtraBold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nexa Trial";
+  src: url("/fonts/nexa-preview/Nexa-Trial-Heavy.otf") format("opentype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nexa Trial";
+  src: url("/fonts/nexa-preview/Nexa-Trial-Black.otf") format("opentype");
+  font-style: normal;
+  font-weight: 950;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Typeface — IBM Plex Sans Arabic covers both Arabic and Latin, so    */
+/*  the whole site runs on a single family.                            */
+/* ------------------------------------------------------------------ */
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  src: url("/fonts/ibm-plex-sans-arabic/IBMPlexSansArabic-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  src: url("/fonts/ibm-plex-sans-arabic/IBMPlexSansArabic-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  src: url("/fonts/ibm-plex-sans-arabic/IBMPlexSansArabic-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  src: url("/fonts/ibm-plex-sans-arabic/IBMPlexSansArabic-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------ */
+/*  BRXEL design tokens                                               */
+/*                                                                     */
+/*  Ink ground (#150C09), cream type (#F7F1E6) and a Sun-gold accent   */
+/*  (#F2A12C) carried by a                                              */
+/*  four-stop gradient. Semantic names below are kept from the         */
+/*  original build so components need no churn — only the values move. */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Core brand colors. */
+  --color-brand: #f2a12c;
+  --color-brand-bright: #f7bd5c;
+  --color-brand-deep: #c47a12;
+
+  /* Semantic roles — use these names for new interface work. */
+  --color-primary: #f2a12c;
+  --color-secondary: #f9d9a0;
+  --color-accent: #f7bd5c;
+  --color-background: #150c09;
+  --color-background-deep: #0c0705;
+  --color-card: #22140e;
+  --color-heading: #f7f1e6;
+  --color-body: #c9bcac;
+  --color-muted: #8a807a;
+  --color-border: rgb(247 241 230 / 0.1);
+  --color-success: #4ade80;
+  --color-warning: #f2a12c;
+  --color-error: #f87171;
+
+  /* Warm dark grounds */
+  --color-void: #0c0705;
+  --color-navy: #150c09;
+  --color-navy-raised: #22140e;
+
+  /* Light ground, for the bands that break up the dark */
+  --color-paper: #f7f1e6;
+  --color-peach: #f9d9a0;
+
+  /* Type */
+  --color-ice: #f7f1e6;
+  --color-ice-muted: #c9bcac;
+  --color-ice-faint: #8a807a;
+
+  /* Lines and surfaces built on the cream tone so they read as one system. */
+  --color-hairline: rgb(247 241 230 / 0.1);
+  --color-hairline-strong: rgb(247 241 230 / 0.2);
+  --color-surface: rgb(247 241 230 / 0.035);
+  --color-surface-hover: rgb(247 241 230 / 0.07);
+
+  --font-sans: "IBM Plex Sans Arabic", system-ui, -apple-system, sans-serif;
+
+  --radius-card: 1rem;
+  --radius-lg: 1.25rem;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.5), 0 16px 40px -24px rgb(0 0 0 / 0.85);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.55), 0 28px 60px -28px rgb(242 161 44 / 0.35);
+
+  /* Form fields, re-pointed by .on-light below. */
+  --color-field: rgb(0 0 0 / 0.28);
+  --color-field-focus: rgb(0 0 0 / 0.42);
+
+  /* The one official brand gradient. */
+  --gradient-brand: linear-gradient(120deg, #c47a12 0%, #e0901f 34%, #f2a12c 68%, #f7bd5c 100%);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Light band                                                         */
+/*                                                                     */
+/*  Re-points the semantic tokens at a cream ground so the very same    */
+/*  components render correctly on light and dark alike. Sections       */
+/*  alternate between the two so the site never reads as one slab.      */
+/* ------------------------------------------------------------------ */
+.on-light {
+  /* Semantic roles on cream surfaces. */
+  --color-primary: #8c5a0b;
+  --color-secondary: #6b4408;
+  --color-accent: #8c5a0b;
+  --color-background: #f7f1e6;
+  --color-background-deep: #fffdf8;
+  --color-card: #fffdf8;
+  --color-heading: #1c110c;
+  --color-body: #6b615a;
+  --color-muted: #8a807a;
+  --color-border: rgb(21 12 9 / 0.12);
+  --color-success: #166534;
+  --color-warning: #92400e;
+  --color-error: #b91c1c;
+
+  --color-ice: #1c110c;
+  --color-ice-muted: #6b615a;
+  --color-ice-faint: #8a807a;
+
+  --color-hairline: rgb(21 12 9 / 0.12);
+  --color-hairline-strong: rgb(21 12 9 / 0.24);
+  --color-surface: #fffdf8;
+  --color-surface-hover: #fffdf8;
+
+  /* Gold is too light for text on cream; a deep amber keeps contrast. */
+  --color-brand-bright: #8c5a0b;
+
+  --color-field: #ffffff;
+  --color-field-focus: #ffffff;
+
+  --shadow-card: 0 1px 2px rgb(21 12 9 / 0.05), 0 12px 32px -18px rgb(21 12 9 / 0.2);
+  --shadow-lift: 0 2px 6px rgb(21 12 9 / 0.08), 0 24px 48px -22px rgb(140 90 11 / 0.28);
+
+  background-color: var(--color-paper);
+  color: var(--color-ice);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
+  /* The sticky header must not cover the target of an in-page link. */
+  scroll-padding-top: 5.5rem;
+  background: var(--color-navy);
+}
+
+body {
+  background: var(--color-navy);
+  color: var(--color-ice);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #150c09;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-bright);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Latin runs (BRXEL and emails) keep LTR order inside an RTL page. */
+.latin {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Brand utilities                                                    */
+/* ------------------------------------------------------------------ */
+.brand-gradient {
+  background-image: var(--gradient-brand);
+}
+
+.brand-gradient-text {
+  padding-block: 0.14em 0.24em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-image: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Lighter gradient for large display type on the dark ground — the deep end of
+   --gradient-brand is too dark to read as text. */
+.headline-accent {
+  /* background-clip: text paints only inside the box: pad it so Arabic marks and
+     descenders (ـى، ـُ، ـّ) are not cut off at tight line heights. */
+  padding-block: 0.14em 0.24em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-image: linear-gradient(100deg, #fbe3b5 0%, #f7bd5c 45%, #f2a12c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Ambient ember light behind hero and feature bands. */
+.aurora {
+  background-image:
+    radial-gradient(48rem 26rem at 80% -8%, rgb(242 161 44 / 0.2), transparent 62%),
+    radial-gradient(36rem 22rem at 6% 6%, rgb(122 74 8 / 0.3), transparent 65%);
+}
+
+/* Faint technical grid, ~56px, fading out toward the bottom. */
+.tech-grid {
+  background-image:
+    linear-gradient(to left, var(--color-hairline) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-hairline) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+}
+
+/* Single-direction engraving hatch — 313.763°, 2mm pitch, 0.09mm line.
+   1mm = 3.7795px @96dpi, so pitch = 7.559px and line = 0.34px. */
+.hatch {
+  background-image: repeating-linear-gradient(
+    313.763deg,
+    var(--hatch-color, rgb(247 241 230 / 0.7)) 0 0.34px,
+    transparent 0.34px 7.559px
+  );
+}
+.on-light .hatch {
+  --hatch-color: rgb(21 12 9 / 0.6);
+}
+
+/* Halftone dot field — a nod to print screens. Used behind headers. */
+.halftone {
+  background-image: radial-gradient(rgb(247 241 230 / 0.14) 1.1px, transparent 1.2px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(60% 60% at 50% 40%, #000, transparent 100%);
+  mask-image: radial-gradient(60% 60% at 50% 40%, #000, transparent 100%);
+}
+.on-light .halftone {
+  background-image: radial-gradient(rgb(21 12 9 / 0.1) 1.1px, transparent 1.2px);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Hero motion                                                        */
+/*                                                                     */
+/*  Every animation here is decorative and compositor-friendly         */
+/*  (transform / opacity / background-position only). The whole block   */
+/*  is switched off under prefers-reduced-motion further down.         */
+/* ------------------------------------------------------------------ */
+
+/* The grid drifts one cell downward, forever — a slow sense of travel. */
+@keyframes grid-drift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 0, 0 56px; }
+}
+.tech-grid-drift {
+  animation: grid-drift 16s linear infinite;
+}
+
+/* Two ember clouds breathing out of phase, so the glow never loops visibly. */
+@keyframes aurora-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
+  50% { transform: translate3d(-4%, 3%, 0) scale(1.15); opacity: 1; }
+}
+@keyframes aurora-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.1); opacity: 0.7; }
+  50% { transform: translate3d(5%, -3%, 0) scale(1); opacity: 1; }
+}
+.aurora-a {
+  background-image: radial-gradient(46rem 26rem at 78% -6%, rgb(242 161 44 / 0.28), transparent 62%);
+  animation: aurora-a 19s ease-in-out infinite;
+}
+.aurora-b {
+  background-image: radial-gradient(38rem 24rem at 8% 10%, rgb(141 34 10 / 0.4), transparent 66%);
+  animation: aurora-b 23s ease-in-out infinite;
+}
+
+/* A wide highlight sweeping across the band every few seconds. */
+@keyframes beam-sweep {
+  0% { transform: translateX(-60%) skewX(-14deg); opacity: 0; }
+  35% { opacity: 0.5; }
+  100% { transform: translateX(160%) skewX(-14deg); opacity: 0; }
+}
+.beam {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgb(242 161 44 / 0.16),
+    rgb(247 241 230 / 0.08),
+    transparent
+  );
+  animation: beam-sweep 9s ease-in-out infinite;
+}
+
+/* The gradient in the headline slides slowly across the word. */
+@keyframes gradient-slide {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.brand-gradient-text-animated {
+  background-size: 220% auto;
+  animation: gradient-slide 7s ease-in-out infinite;
+}
+
+@keyframes scroll-cue {
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+.scroll-cue {
+  animation: scroll-cue 2.2s ease-in-out infinite;
+}
+
+/* Marquee for the client strip. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 58s linear infinite;
+}
+@media (hover: hover) {
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Interaction                                                        */
+/* ------------------------------------------------------------------ */
+.card-hover {
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 220ms ease,
+    background-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+/* The lead service in the editorial catalogue behaves like a dark spread
+   inside the light section. */
+.service-card-featured {
+  --color-ice: #f7f1e6;
+  --color-ice-muted: #c9bcac;
+  --color-ice-faint: #a99b8c;
+  --color-hairline: rgb(247 241 230 / 0.14);
+  --color-hairline-strong: rgb(247 241 230 / 0.26);
+  --color-surface: rgb(247 241 230 / 0.06);
+  --color-surface-hover: rgb(247 241 230 / 0.1);
+  --color-brand-bright: #f7bd5c;
+
+  background-color: #1c110c;
+  background-image:
+    radial-gradient(28rem 18rem at 100% 0%, rgb(242 161 44 / 0.24), transparent 65%),
+    linear-gradient(145deg, rgb(247 241 230 / 0.035), transparent 55%);
+  box-shadow: 0 24px 60px -32px rgb(21 12 9 / 0.7);
+}
+
+/* Portfolio folders: the tab and body travel together while the internal
+   collage keeps its own restrained image motion. */
+.work-folder {
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .work-folder:hover {
+    transform: translateY(-5px);
+  }
+  .work-folder:hover article {
+    border-color: rgb(242 161 44 / 0.45);
+    box-shadow: 0 30px 70px -38px rgb(242 161 44 / 0.5);
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-hover:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-hairline-strong);
+    background-color: var(--color-surface-hover);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+/* Oversized editorial numerals on the full-bleed impact strip. */
+.stat-strip-number {
+  color: #ffffff;
+  text-shadow: 0 12px 36px rgb(61 11 0 / 0.24);
+}
+
+/* Entrance reveal, driven by IntersectionObserver in components/ui/Reveal.js. */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 620ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 620ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+/* Keyboard focus must never land inside an element still awaiting reveal. */
+.reveal:focus-within {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .card-hover,
+  .card-hover:hover,
+  .work-folder,
+  .work-folder:hover {
+    transition: none;
+    transform: none;
+  }
+  .tech-grid-drift,
+  .aurora-a,
+  .aurora-b,
+  .brand-gradient-text-animated,
+  .scroll-cue,
+  .marquee-track {
+    animation: none;
+  }
+  .beam {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Forms                                                              */
+/* ------------------------------------------------------------------ */
+.field {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-hairline);
+  background-color: var(--color-field);
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  color: var(--color-ice);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+.field::placeholder {
+  color: var(--color-ice-faint);
+}
+.field:hover {
+  border-color: var(--color-hairline-strong);
+}
+.field:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  background-color: var(--color-field-focus);
+  box-shadow: 0 0 0 3px rgb(242 161 44 / 0.16);
+}
+.field[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+/* Native select arrow is unstyleable across browsers, so it is replaced with a
+   chevron pinned to the inline end (the left in this RTL page). */
+select.field {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a807a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-position: left 1rem center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  padding-left: 2.75rem;
+}
+select.field option {
+  background-color: #22140e;
+  color: #f7f1e6;
+}
+.on-light select.field option {
+  background-color: #ffffff;
+  color: #1c110c;
+}
+
+/* ------------------------------------------------------------------ */
+/*  BRXEL home: hero fan, seal, slash rules, tilted marquee           */
+/* ------------------------------------------------------------------ */
+
+/* Faint rules at 66° from the baseline — the angle of the X's stroke. */
+.slash-rules {
+  background-image: repeating-linear-gradient(
+    114deg,
+    rgb(247 241 230 / 0.045) 0 1px,
+    transparent 1px 64px
+  );
+  -webkit-mask-image: radial-gradient(80% 70% at 50% 30%, #000, transparent 100%);
+  mask-image: radial-gradient(80% 70% at 50% 30%, #000, transparent 100%);
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+.pulse-dot {
+  animation: pulse-dot 1.8s ease-out infinite;
+}
+
+@keyframes seal-spin {
+  to { transform: rotate(360deg); }
+}
+.seal-spin {
+  animation: seal-spin 24s linear infinite;
+}
+
+/* Five cards fanned from a common centre. --i: offset from centre, --a: |--i|. */
+.hero-fan {
+  --card: clamp(12.5rem, 33vw, 25rem);
+  --step: clamp(7.5rem, 21vw, 16rem);
+}
+.hero-fan-card {
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  width: var(--card);
+  aspect-ratio: 1;
+  z-index: calc(10 - var(--a));
+  transform: translateX(calc(-50% - var(--i) * var(--step))) translateY(calc(var(--a) * 2.4rem))
+    rotate(calc(var(--i) * -7deg)) scale(calc(1.08 - var(--a) * 0.06));
+  animation: fan-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(250ms + var(--a) * 110ms);
+}
+@keyframes fan-in {
+  from { opacity: 0; translate: 0 5rem; }
+  to { opacity: 1; translate: 0 0; }
+}
+.hero-fan-inner {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  border: 1px solid rgb(247 241 230 / 0.12);
+  background: #1c110c;
+  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.9);
+  transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@media (hover: hover) {
+  .hero-fan-card:hover {
+    z-index: 20;
+  }
+  .hero-fan-card:hover .hero-fan-inner {
+    transform: translateY(-1.25rem);
+  }
+}
+
+/* Tilted marquee: the back band runs the other way in outlined type. */
+.marquee-reverse .marquee-track {
+  animation-direction: reverse;
+}
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(247 241 230 / 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot,
+  .seal-spin,
+  .hero-fan-card {
+    animation: none;
+  }
+  .hero-fan-inner {
+    transition: none;
+  }
+}

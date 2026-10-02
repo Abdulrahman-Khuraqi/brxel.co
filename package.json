@@ -1,0 +1,36 @@
+{
+  "name": "brxel-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BRXEL — Saudi graphic design studio: brand identity, social media, print and UI.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "lucide-react": "^0.552.0",
+    "next": "15.5.19",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@next/eslint-plugin-next": "15.5.19",
+    "@next/swc-win32-x64-msvc": "15.5.19",
+    "@tailwindcss/oxide-win32-x64-msvc": "4.3.3",
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.19",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "lightningcss-win32-x64-msvc": "1.32.0",
+    "tailwindcss": "^4"
+  },
+  "browserslist": [
+    "chrome >= 92",
+    "firefox >= 90",
+    "safari >= 15.4",
+    "edge >= 92"
+  ]
+}
