@@ -5,8 +5,8 @@ import { Spark } from "@/components/ui/Logo";
 import { featuredProjects } from "@/lib/projects";
 
 const STATS = [
-  { value: "+380", label: "مشروع مُنجز" },
-  { value: "+120", label: "عميل" },
+  { value: "+1000", label: "مشروع مُنجز" },
+  { value: "+200", label: "عميل" },
   { value: "+60", label: "هوية بصرية" },
 ];
 
