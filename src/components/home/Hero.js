@@ -10,10 +10,128 @@ const STATS = [
   { value: "+60", label: "هوية بصرية" },
 ];
 
-/** Headline, one line of pitch, two actions — and four real projects beside it. */
-export default function Hero() {
-  const mosaic = featuredProjects.slice(0, 4);
+/** The rise of the brand's 66° slash (see `Spark`): horizontal run per unit of height. */
+const SLANT = 114 / 256;
 
+/** A slash-shaped band: bottom-left corner at (x, bottom), `width` across, `height` tall. */
+function slash({ x, bottom, width, height }) {
+  const run = height * SLANT;
+  const top = bottom - height;
+  return {
+    points: `${x},${bottom} ${x + width},${bottom} ${x + width + run},${top} ${x + run},${top}`,
+    box: { x, y: top, width: width + run, height },
+  };
+}
+
+/** Three windows onto real work, cut in the shape of the brand's slash. */
+const WINDOWS = [
+  { x: -20, bottom: 600, width: 140, height: 440 },
+  { x: 190, bottom: 500, width: 140, height: 440 },
+  { x: 301, bottom: 620, width: 140, height: 400 },
+].map(slash);
+
+/** Strokes of the same slash: the gold accent, a cream outline, and a thin echo. */
+const STROKES = [
+  { ...slash({ x: 40, bottom: 300, width: 26, height: 160 }), fill: "var(--color-brand)" },
+  { ...slash({ x: 470, bottom: 230, width: 34, height: 200 }), fill: "none", stroke: "var(--color-ice)" },
+  { ...slash({ x: 470, bottom: 640, width: 10, height: 110 }), fill: "var(--color-brand-bright)" },
+];
+
+/** Single gold "pixels": art in every pixel, quite literally. */
+const PIXELS = [
+  [575, 470, 14],
+  [552, 520, 8],
+  [60, 380, 14],
+  [24, 410, 8],
+  [250, 24, 10],
+  [140, 616, 12],
+];
+
+/**
+ * The visual half of the hero: a composition built from the brand's slash,
+ * with three featured projects showing through slash-shaped windows over a
+ * faint pixel grid. Decorative as a whole; the link names where it goes.
+ */
+function HeroArt({ projects }) {
+  return (
+    <Link href="/work/" aria-label="شاهد أعمالنا" className="group relative block">
+      <svg viewBox="0 0 600 640" className="h-auto w-full overflow-visible" aria-hidden="true">
+        <defs>
+          <pattern id="hero-pixels" width="24" height="24" patternUnits="userSpaceOnUse">
+            <rect x="11" y="11" width="2" height="2" fill="var(--color-ice)" />
+          </pattern>
+          <radialGradient id="hero-fade" cx="50%" cy="50%" r="55%">
+            <stop offset="0" stopColor="#fff" stopOpacity="1" />
+            <stop offset="1" stopColor="#fff" stopOpacity="0" />
+          </radialGradient>
+          <mask id="hero-grid-mask">
+            <rect width="600" height="640" fill="url(#hero-fade)" />
+          </mask>
+          <linearGradient id="hero-shade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0.55" stopColor="#0c0705" stopOpacity="0" />
+            <stop offset="1" stopColor="#0c0705" stopOpacity="0.55" />
+          </linearGradient>
+          {WINDOWS.map((frame, index) => (
+            <clipPath key={index} id={`hero-window-${index}`}>
+              <polygon points={frame.points} />
+            </clipPath>
+          ))}
+        </defs>
+
+        <rect width="600" height="640" fill="url(#hero-pixels)" opacity="0.3" mask="url(#hero-grid-mask)" />
+
+        {WINDOWS.map((frame, index) => {
+          const project = projects[index];
+          if (!project) return null;
+          return (
+            <g key={project.id} clipPath={`url(#hero-window-${index})`}>
+              <rect {...frame.box} fill="var(--color-navy-raised)" />
+              <image
+                href={project.image}
+                {...frame.box}
+                preserveAspectRatio="xMidYMid slice"
+                className="hero-art-image"
+              />
+              <rect {...frame.box} fill="url(#hero-shade)" />
+            </g>
+          );
+        })}
+
+        {WINDOWS.map((frame, index) => (
+          <polygon
+            key={index}
+            points={frame.points}
+            fill="none"
+            stroke="var(--color-ice)"
+            strokeOpacity="0.14"
+            strokeWidth="1"
+          />
+        ))}
+
+        {STROKES.map((stroke, index) => (
+          <polygon
+            key={index}
+            points={stroke.points}
+            fill={stroke.fill}
+            stroke={stroke.stroke}
+            strokeWidth={stroke.stroke ? 1.5 : undefined}
+            strokeOpacity={stroke.stroke ? 0.6 : undefined}
+            className="hero-art-stroke"
+            style={{ animationDelay: `${index * 1.3}s` }}
+          />
+        ))}
+
+        {PIXELS.map(([x, y, size]) => (
+          <rect key={`${x}-${y}`} x={x} y={y} width={size} height={size} fill="var(--color-brand)" />
+        ))}
+      </svg>
+
+    </Link>
+  );
+}
+
+/** Headline, one line of pitch, two actions — and a composition of real work beside it. */
+export default function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-void">
       <div
@@ -84,30 +202,7 @@ export default function Hero() {
         </div>
 
         <Reveal delay={120}>
-          <div className="grid grid-cols-2 gap-3 sm:gap-4" aria-label="من أعمالنا">
-            {mosaic.map((project, index) => (
-              <Link
-                key={project.id}
-                href="/work/"
-                className={`group relative block aspect-square overflow-hidden rounded-2xl border border-hairline bg-navy-raised ${
-                  index % 2 === 1 ? "translate-y-6 sm:translate-y-10" : ""
-                }`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={project.image}
-                  alt={`${project.title} — ${project.categoryLabel}`}
-                  width={600}
-                  height={600}
-                  loading={index < 2 ? "eager" : "lazy"}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04] motion-reduce:transition-none"
-                />
-                <span className="absolute bottom-2.5 start-2.5 rounded-full bg-[#0c0705]/75 px-3 py-1 text-xs font-semibold text-[#F7F1E6] backdrop-blur-sm">
-                  {project.categoryLabel}
-                </span>
-              </Link>
-            ))}
-          </div>
+          <HeroArt projects={featuredProjects.slice(0, 3)} />
         </Reveal>
       </div>
     </section>

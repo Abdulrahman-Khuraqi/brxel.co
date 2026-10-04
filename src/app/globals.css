@@ -432,3 +432,38 @@ select.field option {
     animation: none;
   }
 }
+
+/* Home hero artwork: the work drifts up on hover, the slash strokes breathe. */
+.hero-art-image {
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.group:hover .hero-art-image {
+  transform: scale(1.06);
+}
+
+.hero-art-stroke {
+  animation: hero-breathe 6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes hero-breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-art-image,
+  .hero-art-stroke {
+    transition: none;
+    animation: none;
+  }
+}
