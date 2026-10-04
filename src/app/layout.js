@@ -1,12 +1,6 @@
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import SkipToContent from "@/components/layout/SkipToContent";
 import { Toaster } from "@/components/ui/sonner";
-import { brand } from "@/lib/site";
-import { serviceHref, services } from "@/lib/services";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || `https://${brand.domain}`;
+import { brand, siteUrl } from "@/lib/site";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -51,40 +45,11 @@ export const viewport = {
   themeColor: "#0C0705",
 };
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: brand.name,
-  description: brand.shortPitch,
-  url: siteUrl,
-  email: brand.email,
-  telephone: `+${brand.whatsapp}`,
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: `خدمات ${brand.name}`,
-    itemListElement: services.map((service) => ({
-      "@type": "Service",
-      name: service.title,
-      description: service.summary,
-      url: `${siteUrl}${serviceHref(service.id)}`,
-    })),
-  },
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="ar" dir="rtl">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-      </head>
       <body>
-        <SkipToContent />
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        {children}
         <Toaster />
       </body>
     </html>

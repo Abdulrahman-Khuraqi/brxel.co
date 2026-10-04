@@ -1,10 +1,10 @@
 import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
-import { projectsByCategory } from "@/lib/projects";
+import { getPortfolio } from "@/server/content/portfolio";
 
 /** Brand marks from the identity portfolio. The files sit on white, so each tile is cream + multiply. */
-export default function ClientStrip() {
-  const logos = projectsByCategory.identity;
+export default async function ClientStrip() {
+  const logos = (await getPortfolio()).projectsByCategory.identity;
 
   return (
     <Section

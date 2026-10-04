@@ -467,3 +467,123 @@ select.field option {
     animation: none;
   }
 }
+
+/* Blog article body (Markdown). Uses the same tokens, so it reads right on dark and light bands. */
+.prose-brxel {
+  color: var(--color-ice-muted);
+  font-size: 1.0625rem;
+  line-height: 2;
+}
+
+.prose-brxel > * + * {
+  margin-top: 1.25em;
+}
+
+.prose-brxel h2,
+.prose-brxel h3,
+.prose-brxel h4 {
+  color: var(--color-ice);
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 2em;
+}
+
+.prose-brxel h2 {
+  font-size: 1.5rem;
+}
+
+.prose-brxel h3 {
+  font-size: 1.25rem;
+}
+
+.prose-brxel strong {
+  color: var(--color-ice);
+}
+
+.prose-brxel a {
+  color: var(--color-brand-bright);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.prose-brxel ul,
+.prose-brxel ol {
+  padding-inline-start: 1.4em;
+}
+
+.prose-brxel ul {
+  list-style: disc;
+}
+
+.prose-brxel ol {
+  list-style: decimal;
+}
+
+.prose-brxel li + li {
+  margin-top: 0.4em;
+}
+
+.prose-brxel li::marker {
+  color: var(--color-brand);
+}
+
+.prose-brxel blockquote {
+  border-inline-start: 3px solid var(--color-brand);
+  padding-inline-start: 1em;
+  color: var(--color-ice);
+}
+
+.prose-brxel img {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid var(--color-hairline);
+}
+
+.prose-brxel code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  background: var(--color-surface-hover);
+  border-radius: 0.375rem;
+  padding: 0.1em 0.35em;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.prose-brxel pre {
+  direction: ltr;
+  overflow-x: auto;
+  background: var(--color-navy-raised);
+  border: 1px solid var(--color-hairline);
+  border-radius: 0.75rem;
+  padding: 1em;
+}
+
+.prose-brxel pre code {
+  background: none;
+  padding: 0;
+}
+
+.prose-brxel hr {
+  border-color: var(--color-hairline);
+}
+
+.prose-table {
+  overflow-x: auto;
+}
+
+.prose-brxel table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.prose-brxel th,
+.prose-brxel td {
+  border-bottom: 1px solid var(--color-hairline);
+  padding: 0.6em 0.75em;
+  text-align: start;
+}
+
+.prose-brxel th {
+  color: var(--color-ice);
+}

@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { ArrowLeft, Check, Copy, Mail, MessageCircle } from "lucide-react";
 import { pushDataLayer } from "@/lib/analytics";
-import { loadEnquiry, mailtoUrl, whatsappUrl } from "@/lib/contact";
+import { mailtoUrl, parseEnquiry, readEnquiry, whatsappUrl } from "@/lib/contact";
 import { brand, contactLinks } from "@/lib/site";
 
 const ID_PATTERN = /^BRX-\d{6}-[A-Z0-9]{4}$/;
@@ -17,18 +17,25 @@ const NEXT_STEPS = [
   { title: "نرسل عرضك", body: "نطاق عمل مكتوب بالمخرجات والمدة والتكلفة." },
 ];
 
+/** The stored request never changes while the page is open. */
+const subscribeNever = () => () => {};
+
 export default function ThankYou() {
   const params = useSearchParams();
   const rawId = (params.get("id") || "").toUpperCase();
   const requestId = ID_PATTERN.test(rawId) ? rawId : "";
-  const [enquiry, setEnquiry] = useState(null);
+  // sessionStorage only exists in the browser; the server render sees no stored request.
+  const rawEnquiry = useSyncExternalStore(
+    subscribeNever,
+    () => (requestId ? readEnquiry(requestId) : null),
+    () => null
+  );
+  const enquiry = useMemo(() => parseEnquiry(rawEnquiry), [rawEnquiry]);
   const [copied, setCopied] = useState(false);
   const tracked = useRef(false);
 
   useEffect(() => {
-    if (!requestId) return;
-    setEnquiry(loadEnquiry(requestId));
-    if (tracked.current) return;
+    if (!requestId || tracked.current) return;
     tracked.current = true;
     pushDataLayer("thank_you_view", { form_id: "brxel_enquiry", request_id: requestId });
   }, [requestId]);

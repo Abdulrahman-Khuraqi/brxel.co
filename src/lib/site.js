@@ -17,6 +17,9 @@ export const brand = {
   whatsapp: "963941581406",
 };
 
+/** Canonical origin for metadata, sitemaps and structured data. */
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || `https://${brand.domain}`;
+
 export const contactLinks = {
   whatsapp: `https://wa.me/${brand.whatsapp}`,
   email: `mailto:${brand.email}`,
@@ -27,6 +30,7 @@ export const nav = [
   { href: "/", label: "الرئيسية" },
   { href: "/services/", label: "الخدمات" },
   { href: "/work/", label: "أعمالنا" },
+  { href: "/blog/", label: "المدونة" },
   { href: "/about/", label: "من نحن" },
   { href: "/contact/", label: "تواصل" },
 ];

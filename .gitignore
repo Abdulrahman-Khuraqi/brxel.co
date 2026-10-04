@@ -43,3 +43,7 @@ public/fonts/nexa-preview/
 
 # local tooling
 .claude/
+
+# uploads and local data
+/storage/
+!.env.example

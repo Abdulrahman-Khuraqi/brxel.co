@@ -25,3 +25,11 @@ export function formatDate(iso) {
   return `${day} ${MONTHS_AR[month - 1]} ${year}`;
 }
 
+
+/** Formats a Date (or anything Date accepts) by its UTC calendar day, the same on server and client. */
+export function formatDay(value) {
+  if (!value) return "";
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return formatDate(date.toISOString().slice(0, 10));
+}

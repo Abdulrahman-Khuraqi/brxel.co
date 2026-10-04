@@ -1,5 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import Button from "@/components/ui/Button";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 export const metadata = {
   title: "الصفحة غير موجودة",
@@ -7,6 +9,9 @@ export const metadata = {
 
 export default function NotFound() {
   return (
+    <>
+      <Header />
+      <main id="main">
     <section className="relative overflow-hidden bg-navy">
       <div className="aurora absolute inset-0" aria-hidden="true" />
       <div className="tech-grid absolute inset-0" aria-hidden="true" />
@@ -30,5 +35,8 @@ export default function NotFound() {
         </div>
       </div>
     </section>
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -129,9 +129,17 @@ export function saveEnquiry(requestId, record) {
   }
 }
 
-export function loadEnquiry(requestId) {
+/** The stored request as a raw string: a stable snapshot for useSyncExternalStore. */
+export function readEnquiry(requestId) {
   try {
-    const raw = window.sessionStorage.getItem(storageKey(requestId));
+    return window.sessionStorage.getItem(storageKey(requestId));
+  } catch {
+    return null;
+  }
+}
+
+export function parseEnquiry(raw) {
+  try {
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;

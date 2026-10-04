@@ -2,13 +2,8 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import { Spark } from "@/components/ui/Logo";
-import { featuredProjects } from "@/lib/projects";
-
-const STATS = [
-  { value: "+1000", label: "مشروع مُنجز" },
-  { value: "+200", label: "عميل" },
-  { value: "+60", label: "هوية بصرية" },
-];
+import { getPortfolio } from "@/server/content/portfolio";
+import { getSetting } from "@/server/content/settings";
 
 /** The rise of the brand's 66° slash (see `Spark`): horizontal run per unit of height. */
 const SLANT = 114 / 256;
@@ -131,7 +126,9 @@ function HeroArt({ projects }) {
 }
 
 /** Headline, one line of pitch, two actions — and a composition of real work beside it. */
-export default function Hero() {
+export default async function Hero() {
+  const [{ featuredProjects }, stats] = await Promise.all([getPortfolio(), getSetting("hero.stats")]);
+
   return (
     <section className="relative isolate overflow-hidden bg-void">
       <div
@@ -188,7 +185,7 @@ export default function Hero() {
 
           <Reveal delay={320}>
             <dl className="mt-12 grid max-w-md grid-cols-3 divide-x divide-hairline border-t border-hairline pt-6">
-              {STATS.map((stat, index) => (
+              {stats.map((stat, index) => (
                 <div key={stat.label} className={index === 0 ? "pe-4" : "px-4"}>
                   <dt className="sr-only">{stat.label}</dt>
                   <dd>

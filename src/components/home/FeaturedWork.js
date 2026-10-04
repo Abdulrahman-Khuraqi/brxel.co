@@ -3,10 +3,11 @@ import { ArrowLeft } from "lucide-react";
 import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
 import ProjectCard from "@/components/work/ProjectCard";
-import { featuredProjects, projectCount } from "@/lib/projects";
+import { getPortfolio } from "@/server/content/portfolio";
 
 /** Six featured projects, one discipline after another, linking through to the full portfolio. */
-export default function FeaturedWork() {
+export default async function FeaturedWork() {
+  const { featuredProjects, projectCount } = await getPortfolio();
   const picks = featuredProjects.slice(0, 6);
 
   return (

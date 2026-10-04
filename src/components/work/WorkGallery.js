@@ -3,14 +3,9 @@
 import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 import ProjectCard from "@/components/work/ProjectCard";
-import { projects, projectsByCategory, categoryOrder, CATEGORIES, categoryCounts } from "@/lib/projects";
+import { categoryOrder, CATEGORIES } from "@/lib/projects";
 
 const PAGE_SIZE = 12;
-
-const FILTERS = [
-  { key: "all", label: "الكل", count: projects.length },
-  ...categoryOrder.map((key) => ({ key, label: CATEGORIES[key], count: categoryCounts[key] })),
-];
 
 /** Reads "#work-social" style links so other pages can open a filtered view. */
 function filterFromHash() {
@@ -23,7 +18,11 @@ function filterFromHash() {
  * disciplines best-first; a filter shows that discipline best-first.
  * Twelve at a time, so the page stays light as the portfolio grows.
  */
-export default function WorkGallery() {
+export default function WorkGallery({ projects, projectsByCategory, categoryCounts }) {
+  const FILTERS = [
+    { key: "all", label: "الكل", count: projects.length },
+    ...categoryOrder.map((key) => ({ key, label: CATEGORIES[key], count: categoryCounts[key] })),
+  ];
   const [active, setActive] = useState("all");
   const [visible, setVisible] = useState(PAGE_SIZE);
 

@@ -16,10 +16,12 @@ export default function Header() {
   const homeHref = isEnglish ? "/en/" : "/";
   const contactHref = isEnglish ? "/en/contact/" : "/contact/";
 
-  // Route changes come from client navigation, so the panel has to be closed here.
-  useEffect(() => {
+  // Route changes come from client navigation, so the panel closes when the path changes.
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (menuPath !== pathname) {
+    setMenuPath(pathname);
     setMenuOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);

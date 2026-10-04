@@ -4,7 +4,8 @@ import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
 import ServiceIcon from "@/components/ui/ServiceIcon";
 import ProjectCard from "@/components/work/ProjectCard";
-import { CATEGORIES, projectsByCategory } from "@/lib/projects";
+import { CATEGORIES } from "@/lib/projects";
+import { getPortfolio } from "@/server/content/portfolio";
 import { serviceHref, services } from "@/lib/services";
 
 /*
@@ -94,8 +95,8 @@ export function ServiceAudience({ service, tone }) {
 }
 
 /** A few delivered projects from the matching portfolio discipline. */
-export function ServiceWork({ service, tone }) {
-  const work = projectsByCategory[service.work] || [];
+export async function ServiceWork({ service, tone }) {
+  const work = (await getPortfolio()).projectsByCategory[service.work] || [];
   if (!work.length) return null;
 
   return (

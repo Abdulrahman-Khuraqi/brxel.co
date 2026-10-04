@@ -20,8 +20,8 @@ export default function Reveal({ children, delay = 0, className = "", as: Tag = 
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return;
+      const show = window.setTimeout(() => setVisible(true), 0);
+      return () => window.clearTimeout(show);
     }
 
     const observer = new IntersectionObserver(
