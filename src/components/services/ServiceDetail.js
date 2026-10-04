@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { ArrowLeft, Check, Clock, Minus, RefreshCw } from "lucide-react";
 import Button from "@/components/ui/Button";
 import ServiceIcon from "@/components/ui/ServiceIcon";
+import { serviceHref } from "@/lib/services";
 
 function Meta({ icon: Icon, label, value }) {
   return (
@@ -12,7 +14,7 @@ function Meta({ icon: Icon, label, value }) {
   );
 }
 
-/** Full service entry on the services page: scope, exclusions and timeline. */
+/** Full service entry on the services page: scope, exclusions and timeline, linking to its own page. */
 export default function ServiceDetail({ service }) {
   return (
     <article
@@ -25,7 +27,11 @@ export default function ServiceDetail({ service }) {
             <ServiceIcon name={service.icon} className="h-6 w-6" />
           </span>
 
-          <h2 className="mt-5 text-xl font-bold leading-9 text-ice sm:text-2xl">{service.title}</h2>
+          <h2 className="mt-5 text-xl font-bold leading-9 text-ice sm:text-2xl">
+            <Link href={serviceHref(service.id)} className="transition-colors hover:text-brand-bright">
+              {service.title}
+            </Link>
+          </h2>
 
           <p className="mt-3 text-base text-ice-muted">{service.summary}</p>
 
@@ -34,10 +40,15 @@ export default function ServiceDetail({ service }) {
             <Meta icon={RefreshCw} label="المراجعات" value={service.revisions} />
           </div>
 
-          <Button href="#contact" className="mt-6 w-full sm:w-auto">
-            اطلب عرض سعر
-            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          </Button>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Button href="#contact">
+              اطلب عرض سعر
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            </Button>
+            <Button href={serviceHref(service.id)} variant="secondary">
+              تفاصيل الخدمة
+            </Button>
+          </div>
         </div>
 
         <div className="grid content-start gap-8">

@@ -6,6 +6,8 @@ import {
   PenTool,
   Presentation,
   Printer,
+  ShoppingBag,
+  Store,
 } from "lucide-react";
 
 /**
@@ -20,6 +22,8 @@ const ICONS = {
   Package,
   Presentation,
   Clapperboard,
+  ShoppingBag,
+  Store,
 };
 
 export default function ServiceIcon({ name, className = "h-5 w-5" }) {

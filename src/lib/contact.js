@@ -6,8 +6,10 @@ export const TIMELINES = ["في أقرب وقت", "خلال شهر", "من شه�
 
 export const NOT_SURE = "لست متأكدًا";
 
-/** Service titles without the repeated "تصميم" prefix, so the choices scan quickly two per row. */
-export const SERVICE_OPTIONS = [...services.map((service) => service.title.replace(/^تصميم\s+/, "")), NOT_SURE];
+/** A service title without the repeated "تصميم" prefix, so the choices scan quickly two per row. */
+export const serviceOption = (service) => service.title.replace(/^تصميم\s+/, "");
+
+export const SERVICE_OPTIONS = [...services.map(serviceOption), NOT_SURE];
 
 export const MIN_DETAILS = 20;
 export const MAX_DETAILS = 1500;

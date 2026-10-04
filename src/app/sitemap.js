@@ -1,4 +1,5 @@
 import { LEGAL_UPDATED } from "@/lib/legal";
+import { serviceHref, services } from "@/lib/services";
 import { brand } from "@/lib/site";
 
 // `output: "export"` needs the sitemap generated at build time, not per request.
@@ -9,6 +10,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || `https://${brand.domain}`;
 const ROUTES = [
   { path: "/", priority: 1 },
   { path: "/services/", priority: 0.9 },
+  ...services.map((service) => ({ path: serviceHref(service.id), priority: 0.8 })),
   { path: "/work/", priority: 0.8 },
   { path: "/contact/", priority: 0.8 },
   { path: "/about/", priority: 0.7 },

@@ -13,7 +13,12 @@ const CHANNELS = [
  * The closing band on every main page: a short pitch and the direct channels
  * on one side, the step-by-step enquiry form on the other.
  */
-export default function ContactSection({ id = "contact", location = "footer", title = "لنصنع شيئًا يُشبهك" }) {
+export default function ContactSection({
+  id = "contact",
+  location = "footer",
+  title = "لنصنع شيئًا يُشبهك",
+  service = "",
+}) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="relative isolate scroll-mt-20 overflow-hidden border-t border-hairline bg-void">
       <div
@@ -61,7 +66,7 @@ export default function ContactSection({ id = "contact", location = "footer", ti
         </Reveal>
 
         <Reveal delay={80}>
-          <EnquiryForm location={location} />
+          <EnquiryForm location={location} service={service} />
         </Reveal>
       </div>
     </section>

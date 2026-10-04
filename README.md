@@ -24,6 +24,7 @@ Canonical URLs, Open Graph tags and `sitemap.xml` default to `https://brxel.co`;
 |---|---|
 | `/` | Hero, services, featured work, process, clients, enquiry form |
 | `/services/` | Every service in full (scope, exclusions, timeline), packages, process |
+| `/services/<id>/` | One page per service — including Salla and Zid store design — with scope, who it suits, process, related work, FAQ and an enquiry form opened on that service |
 | `/work/` | Every delivered project, filterable by discipline |
 | `/thank-you/` | Shown after the enquiry form, with the request id (`?id=BRX-…`) |
 | `/references/` | Curated agency websites, templates, and inspiration feeds |
@@ -38,7 +39,7 @@ All routes are prerendered at build time.
 | Concern | Where |
 |---|---|
 | Brand and contact facts | `src/lib/site.js` |
-| Services and packages | `src/data/services.json` (read via `src/lib/services.js`) |
+| Services and packages | `src/data/services.json` (read via `src/lib/services.js`); adding a service there adds its page, sitemap entry, footer link and form choice |
 | Delivered projects | `src/data/projects.json` (read via `src/lib/projects.js`) |
 | Policy text | `src/data/policies.json` (read via `src/lib/legal.js`) |
 | Enquiry schema (Zod), steps, request id, submission | `src/lib/contact.js` |

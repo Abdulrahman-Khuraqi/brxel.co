@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import SkipToContent from "@/components/layout/SkipToContent";
 import { Toaster } from "@/components/ui/sonner";
 import { brand } from "@/lib/site";
-import { services } from "@/lib/services";
+import { serviceHref, services } from "@/lib/services";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || `https://${brand.domain}`;
 
@@ -22,6 +22,8 @@ export const metadata = {
     "تصميم سوشيال ميديا",
     "تصميم مطبوعات",
     "تصميم واجهات",
+    "تصميم متجر سلة",
+    "تصميم متجر زد",
     "تصميم تغليف",
     "موشن جرافيك",
     "BRXEL",
@@ -64,6 +66,7 @@ const organizationSchema = {
       "@type": "Service",
       name: service.title,
       description: service.summary,
+      url: `${siteUrl}${serviceHref(service.id)}`,
     })),
   },
 };

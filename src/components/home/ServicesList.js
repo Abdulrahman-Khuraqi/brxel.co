@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
 import ServiceIcon from "@/components/ui/ServiceIcon";
-import { services } from "@/lib/services";
+import { serviceHref, services } from "@/lib/services";
 
 /** Every service as an even tile, plus one tile for visitors who don't know yet what they need. */
 export default function ServicesList() {
@@ -29,7 +29,7 @@ export default function ServicesList() {
         {services.map((service, index) => (
           <Reveal key={service.id} as="li" delay={(index % 4) * 50} className="h-full">
             <Link
-              href={`/services/#${service.id}`}
+              href={serviceHref(service.id)}
               className="group flex h-full flex-col rounded-2xl border border-hairline bg-surface p-6 transition duration-200 hover:border-hairline-strong hover:bg-surface-hover motion-reduce:transition-none"
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand-bright">
@@ -45,7 +45,7 @@ export default function ServicesList() {
           </Reveal>
         ))}
 
-        <Reveal as="li" delay={150} className="h-full">
+        <Reveal as="li" delay={150} className="h-full lg:col-span-3">
           <Link
             href="#contact"
             className="group flex h-full flex-col rounded-2xl bg-brand p-6 text-[#150C09] transition hover:bg-brand-bright motion-reduce:transition-none"
