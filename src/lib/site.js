@@ -8,7 +8,7 @@ export const brand = {
   owner: "BRXEL",
   tagline: "DESIGN THAT SHIPS.",
   shortPitch:
-    "استوديو تصميم جرافيكي: هوية بصرية، سوشيال ميديا، مطبوعات، وواجهات مواقع، بنطاق عمل واضح ومخرجات محددة.",
+    "استوديو تصميم جرافيكي: هوية بصرية، سوشيال ميديا، مطبوعات، وواجهات مواقع ومتاجر سلة وزد، بنطاق عمل واضح ومخرجات محددة.",
   domain: "brxel.co",
   email: "hello@brxel.co",
   /** Display form, written left to right. */

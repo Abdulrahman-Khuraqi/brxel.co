@@ -19,7 +19,7 @@ export function ServiceScope({ service, tone }) {
       id="scope"
       eyebrow="نطاق الخدمة"
       title="ما تشمله الخدمة وما لا تشمله"
-      lead="هذا النطاق المعتاد للخدمة، ونثبّته لمشروعك في عرض مكتوب قبل البدء."
+      lead="هذا النطاق المعتاد. نثبّته لمشروعك في عرض مكتوب تعتمده قبل البدء، ويبقى مرجعًا للطرفين حتى التسليم."
       align="start"
       tone={tone}
     >
@@ -78,7 +78,7 @@ export function ServiceScope({ service, tone }) {
 /** Who the service is for, so a visitor can tell quickly whether it fits. */
 export function ServiceAudience({ service, tone }) {
   return (
-    <Section id="audience" eyebrow="لمن هذه الخدمة" title="تناسبك هذه الخدمة إذا كنت…" align="start" tone={tone}>
+    <Section id="audience" eyebrow="لمن هذه الخدمة" title="تناسبك إذا كنت…" align="start" tone={tone}>
       <ul className="mt-12 grid gap-4 md:grid-cols-3">
         {service.audience.map((item, index) => (
           <Reveal key={item} as="li" delay={index * 60} className="h-full">
@@ -153,7 +153,7 @@ export function OtherServices({ service, tone }) {
   const others = services.filter((item) => item.id !== service.id);
 
   return (
-    <Section id="other-services" eyebrow="خدمات أخرى" title="قد تحتاج أيضًا" align="start" tone={tone}>
+    <Section id="other-services" eyebrow="خدمات أخرى" title="خدمات تكمّل بعضها" align="start" tone={tone}>
       <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {others.map((item) => (
           <li key={item.id}>
