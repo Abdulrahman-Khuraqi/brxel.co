@@ -37,9 +37,9 @@ function ChoiceGroup({ name, options, value, onChange, columns = "", size = "md"
           <label
             key={option}
             className={cn(
-              "relative flex cursor-pointer items-center gap-3 rounded-xl border px-4 text-sm font-medium transition duration-200 motion-reduce:transition-none",
+              "relative flex cursor-pointer items-center gap-3 rounded-xl border px-4 text-base font-medium transition duration-200 motion-reduce:transition-none",
               "has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand-bright",
-              size === "sm" ? "min-h-11 py-2" : "min-h-13 py-3",
+              size === "sm" ? "min-h-12 py-2 text-sm" : "min-h-14 py-3",
               checked
                 ? "border-brand bg-brand/10 text-ice"
                 : "border-hairline bg-field text-ice-muted hover:border-hairline-strong hover:text-ice"
@@ -76,7 +76,7 @@ function Progress({ step }) {
 
   return (
     <div>
-      <div className="flex items-center justify-between text-xs font-semibold">
+      <div className="flex items-center justify-between text-sm font-semibold">
         <span className="text-brand-bright">
           الخطوة <span className="latin">{step + 1}</span> من <span className="latin">{STEPS.length}</span>
         </span>
@@ -104,13 +104,13 @@ function Progress({ step }) {
               key={item.id}
               aria-current={current ? "step" : undefined}
               className={cn(
-                "flex items-center gap-2 text-xs font-semibold",
+                "flex items-center gap-2 text-sm font-semibold",
                 current ? "text-ice" : done ? "text-ice-muted" : "text-ice-faint"
               )}
             >
               <span
                 className={cn(
-                  "latin flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-[11px]",
+                  "latin flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-xs",
                   done
                     ? "border-brand bg-brand text-[#150C09]"
                     : current
@@ -243,7 +243,7 @@ export default function EnquiryForm({ location = "page" }) {
             id={`${FORM_ID}-title`}
             ref={headingRef}
             tabIndex={-1}
-            className="text-xl font-bold leading-[1.5] text-ice outline-none sm:text-2xl"
+            className="text-xl font-bold text-ice outline-none sm:text-2xl"
           >
             {current.title}
           </h3>
@@ -385,7 +385,7 @@ export default function EnquiryForm({ location = "page" }) {
                   </FormItem>
                 )}
               />
-              <p className="text-xs leading-6 text-ice-faint sm:col-span-2">
+              <p className="text-sm text-ice-faint sm:col-span-2">
                 نستخدم بياناتك للرد على طلبك فقط، وفق{" "}
                 <Link href="/privacy/" className="font-semibold text-ice-muted underline underline-offset-4 hover:text-brand-bright">
                   سياسة الخصوصية
@@ -401,13 +401,13 @@ export default function EnquiryForm({ location = "page" }) {
             <button
               type="button"
               onClick={goBack}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold text-ice-muted transition hover:bg-surface hover:text-ice motion-reduce:transition-none"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-4 text-base font-semibold text-ice-muted transition hover:bg-surface hover:text-ice motion-reduce:transition-none"
             >
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
               رجوع
             </button>
           ) : (
-            <p className="text-xs text-ice-faint">أقل من دقيقة · بدون أي التزام</p>
+            <p className="text-sm text-ice-muted">أقل من دقيقة · بدون أي التزام</p>
           )}
 
           {isLast ? (

@@ -13,11 +13,11 @@ export default function PageHeader({ eyebrow, title, lead, align = "center", chi
       <div className={`mx-auto max-w-6xl px-5 pb-12 pt-14 sm:px-8 sm:pb-16 sm:pt-20 ${centered ? "text-center" : ""}`}>
         <Reveal className={centered ? "mx-auto max-w-3xl" : "max-w-3xl"}>
           {eyebrow ? <p className="text-sm font-semibold text-brand-bright">{eyebrow}</p> : null}
-          <h1 className="mt-3 text-[2rem] font-bold leading-[1.35] text-ice sm:text-[2.75rem] sm:leading-[1.3]">
+          <h1 className="mt-3 text-h1 font-bold text-ice">
             {title}
           </h1>
           {lead ? (
-            <p className={`mt-4 max-w-2xl text-base leading-8 text-ice-muted sm:text-lg ${centered ? "mx-auto" : ""}`}>{lead}</p>
+            <p className={`mt-5 max-w-2xl text-lead text-ice-muted ${centered ? "mx-auto" : ""}`}>{lead}</p>
           ) : null}
           {children}
         </Reveal>

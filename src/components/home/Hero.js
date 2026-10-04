@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-12 sm:px-8 sm:pb-28 sm:pt-20 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-16">
         <div>
           <Reveal>
-            <p className="inline-flex items-center gap-2.5 rounded-full border border-hairline bg-surface px-3.5 py-1.5 text-xs font-semibold text-ice-muted">
+            <p className="inline-flex items-center gap-2.5 rounded-full border border-hairline bg-surface px-4 py-1.5 text-sm font-medium text-ice-muted">
               <span className="relative flex h-2 w-2" aria-hidden="true">
                 <span className="pulse-dot absolute inset-0 rounded-full bg-success" />
                 <span className="relative h-2 w-2 rounded-full bg-success" />
@@ -34,7 +34,7 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={80}>
-            <h1 className="mt-6 text-[clamp(2.5rem,6.2vw,4.5rem)] font-bold leading-[1.25] text-ice">
+            <h1 className="mt-6 text-display font-bold text-ice">
               فنٌّ في
               <span className="flex items-center gap-[0.15em]">
                 <span className="headline-accent">كل بكسل</span>
@@ -44,7 +44,7 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={160}>
-            <p className="mt-5 max-w-lg text-base leading-8 text-ice-muted sm:text-lg sm:leading-9">
+            <p className="mt-5 max-w-xl text-lead text-ice-muted">
               استوديو تصميم جرافيكي: هوية بصرية، سوشيال ميديا، مطبوعات وواجهات مواقع. نطاق عمل مكتوب، وملفات
               تسليم تملكها بالكامل.
             </p>
@@ -61,7 +61,7 @@ export default function Hero() {
               </Link>
               <Link
                 href="/work/"
-                className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-hairline-strong px-6 text-sm font-semibold text-ice transition hover:border-brand hover:text-brand-bright motion-reduce:transition-none"
+                className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-hairline-strong px-6 text-base font-semibold text-ice transition hover:border-brand hover:text-brand-bright motion-reduce:transition-none"
               >
                 شاهد أعمالنا
               </Link>
@@ -74,8 +74,8 @@ export default function Hero() {
                 <div key={stat.label} className={index === 0 ? "pe-4" : "px-4"}>
                   <dt className="sr-only">{stat.label}</dt>
                   <dd>
-                    <span className="latin block text-2xl font-bold text-ice sm:text-3xl">{stat.value}</span>
-                    <span className="mt-1 block text-xs text-ice-faint">{stat.label}</span>
+                    <span className="latin block text-2xl font-bold leading-tight text-ice sm:text-3xl">{stat.value}</span>
+                    <span className="mt-1.5 block text-xs text-ice-muted">{stat.label}</span>
                   </dd>
                 </div>
               ))}
@@ -102,7 +102,7 @@ export default function Hero() {
                   loading={index < 2 ? "eager" : "lazy"}
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04] motion-reduce:transition-none"
                 />
-                <span className="absolute bottom-2.5 start-2.5 rounded-full bg-[#0c0705]/75 px-2.5 py-1 text-[11px] font-semibold text-[#F7F1E6] backdrop-blur-sm">
+                <span className="absolute bottom-2.5 start-2.5 rounded-full bg-[#0c0705]/75 px-3 py-1 text-xs font-semibold text-[#F7F1E6] backdrop-blur-sm">
                   {project.categoryLabel}
                 </span>
               </Link>

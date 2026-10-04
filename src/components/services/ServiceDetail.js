@@ -27,7 +27,7 @@ export default function ServiceDetail({ service }) {
 
           <h2 className="mt-5 text-xl font-bold leading-9 text-ice sm:text-2xl">{service.title}</h2>
 
-          <p className="mt-3 text-sm leading-7 text-ice-muted">{service.summary}</p>
+          <p className="mt-3 text-base text-ice-muted">{service.summary}</p>
 
           <div className="mt-7 space-y-2.5 rounded-xl border border-hairline p-5">
             <Meta icon={Clock} label="مدة التنفيذ" value={service.timeline} />
@@ -42,7 +42,7 @@ export default function ServiceDetail({ service }) {
 
         <div className="grid content-start gap-8">
           <div>
-            <h3 className="text-sm font-semibold text-ice">تشمل الخدمة</h3>
+            <h3 className="text-base font-bold text-ice">تشمل الخدمة</h3>
             <ul className="mt-4 space-y-3">
               {service.deliverables.map((item) => (
                 <li key={item} className="flex gap-2.5 text-sm leading-7 text-ice-muted">
@@ -54,7 +54,7 @@ export default function ServiceDetail({ service }) {
           </div>
 
           <div className="border-t border-hairline pt-7">
-            <h3 className="text-sm font-semibold text-ice">خارج نطاق الخدمة</h3>
+            <h3 className="text-base font-bold text-ice">خارج نطاق الخدمة</h3>
             <ul className="mt-4 space-y-3">
               {service.excludes.map((item) => (
                 <li key={item} className="flex gap-2.5 text-sm leading-7 text-ice-faint">

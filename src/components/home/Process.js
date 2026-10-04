@@ -25,8 +25,8 @@ export default function Process({ tone = "light" }) {
               <span className="latin flex h-9 w-9 items-center justify-center rounded-full border border-hairline-strong text-sm font-bold text-brand-bright">
                 {index + 1}
               </span>
-              <h3 className="mt-5 text-lg font-bold text-ice">{step.title}</h3>
-              <p className="mt-2 text-sm leading-7 text-ice-muted">{step.body}</p>
+              <h3 className="mt-5 text-h3 font-bold text-ice">{step.title}</h3>
+              <p className="mt-2 text-sm text-ice-muted">{step.body}</p>
             </div>
           </Reveal>
         ))}

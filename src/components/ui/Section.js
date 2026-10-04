@@ -35,8 +35,8 @@ export default function Section({
           >
             <div className="max-w-2xl">
               {eyebrow ? <p className="text-sm font-semibold text-brand-bright">{eyebrow}</p> : null}
-              <h2 className="mt-3 text-[1.75rem] font-bold leading-[1.4] text-ice sm:text-[2.25rem]">{title}</h2>
-              {lead ? <p className="mt-4 text-base leading-8 text-ice-muted">{lead}</p> : null}
+              <h2 className="mt-3 text-h2 font-bold text-ice">{title}</h2>
+              {lead ? <p className="mt-4 text-lead text-ice-muted">{lead}</p> : null}
             </div>
             {action && !centered ? <div className="shrink-0">{action}</div> : null}
           </Reveal>

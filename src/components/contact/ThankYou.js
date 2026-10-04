@@ -60,11 +60,11 @@ export default function ThankYou() {
           <Check className="h-10 w-10" strokeWidth={2.75} aria-hidden="true" />
         </span>
 
-        <h1 className="mt-8 text-[2rem] font-bold leading-[1.35] text-ice sm:text-[2.75rem]">
+        <h1 className="mt-8 text-h1 font-bold text-ice">
           {needsHandoff ? "طلبك جاهز" : "شكرًا لك"}
           {firstName ? `، ${firstName}` : ""}!
         </h1>
-        <p className="mx-auto mt-4 max-w-lg text-base leading-8 text-ice-muted sm:text-lg">
+        <p className="mx-auto mt-4 max-w-lg text-lead text-ice-muted">
           {needsHandoff
             ? "خطوة أخيرة: أرسل الطلب عبر واتساب أو البريد ليصلنا فورًا، وسنعود إليك خلال يوم عمل واحد."
             : "تم استلام طلبك بنجاح ✅ وسنعود إليك خلال يوم عمل واحد بنطاق عمل مكتوب وواضح."}
@@ -74,7 +74,7 @@ export default function ThankYou() {
           <div className="mx-auto mt-9 flex max-w-sm items-center justify-between gap-3 rounded-2xl border border-hairline-strong bg-surface p-2 ps-5">
             <div className="text-start">
               <p className="text-xs font-semibold text-ice-faint">رقم الطلب</p>
-              <p className="latin mt-0.5 text-lg font-bold tracking-wide text-ice">{requestId}</p>
+              <p className="latin mt-0.5 text-xl font-bold tracking-wide text-ice">{requestId}</p>
             </div>
             <button
               type="button"
@@ -122,8 +122,8 @@ export default function ThankYou() {
           {NEXT_STEPS.map((item, index) => (
             <li key={item.title} className="rounded-2xl border border-hairline bg-surface p-5">
               <span className="latin text-xs font-bold text-brand-bright">{String(index + 1).padStart(2, "0")}</span>
-              <p className="mt-2 text-sm font-bold text-ice">{item.title}</p>
-              <p className="mt-1 text-xs leading-6 text-ice-muted">{item.body}</p>
+              <p className="mt-2 text-base font-bold text-ice">{item.title}</p>
+              <p className="mt-1 text-sm text-ice-muted">{item.body}</p>
             </li>
           ))}
         </ol>

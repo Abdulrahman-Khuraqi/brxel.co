@@ -49,7 +49,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               aria-current={isActive(link.href) ? "page" : undefined}
-              className={`rounded-lg px-3.5 py-2 text-sm font-medium transition duration-200 motion-reduce:transition-none ${
+              className={`rounded-lg px-3.5 py-2 text-base font-medium transition duration-200 motion-reduce:transition-none ${
                 isActive(link.href)
                   ? "bg-surface text-ice"
                   : "text-ice-muted hover:bg-surface hover:text-ice"
@@ -93,7 +93,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               aria-current={isActive(link.href) ? "page" : undefined}
-              className={`block rounded-lg px-3 py-3 text-sm font-medium transition ${
+              className={`block rounded-lg px-3 py-3 text-base font-medium transition ${
                 isActive(link.href) ? "bg-surface text-ice" : "text-ice-muted hover:bg-surface"
               }`}
             >

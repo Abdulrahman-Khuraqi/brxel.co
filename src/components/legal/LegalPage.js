@@ -38,10 +38,10 @@ export default function LegalPage({ slug }) {
           <div className="space-y-10">
             {doc.sections.map((section) => (
               <section key={section.h}>
-                <h2 className="text-lg font-bold leading-8 text-ice">{section.h}</h2>
+                <h2 className="text-xl font-bold text-ice">{section.h}</h2>
 
                 {section.p?.map((paragraph) => (
-                  <p key={paragraph} className="mt-3 text-sm leading-8 text-ice-muted">
+                  <p key={paragraph} className="mt-3 text-base leading-8 text-ice-muted">
                     {paragraph}
                   </p>
                 ))}
@@ -51,7 +51,7 @@ export default function LegalPage({ slug }) {
                     {section.list.map((item) => (
                       <li
                         key={item}
-                        className="relative ps-5 text-sm leading-8 text-ice-muted before:absolute before:top-[0.95rem] before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-bright before:content-[''] before:start-0"
+                        className="relative ps-5 text-base leading-8 text-ice-muted before:absolute before:top-[0.95rem] before:h-1.5 before:w-1.5 before:rounded-full before:bg-brand-bright before:content-[''] before:start-0"
                       >
                         {item}
                       </li>

@@ -24,10 +24,10 @@ export default function ContactSection({ id = "contact", location = "footer", ti
         <Reveal>
           <div className="lg:sticky lg:top-28">
             <p className="text-sm font-semibold text-brand-bright">ابدأ مشروعك</p>
-            <h2 id={`${id}-title`} className="mt-3 text-[2rem] font-bold leading-[1.35] text-ice sm:text-[2.5rem]">
+            <h2 id={`${id}-title`} className="mt-3 text-h2 font-bold text-ice">
               {title}
             </h2>
-            <p className="mt-4 max-w-md text-base leading-8 text-ice-muted">
+            <p className="mt-4 max-w-md text-lead text-ice-muted">
               أجب عن ثلاثة أسئلة قصيرة، ونعود إليك خلال يوم عمل واحد بنطاق عمل مكتوب وعرض واضح.
             </p>
 
@@ -45,7 +45,7 @@ export default function ContactSection({ id = "contact", location = "footer", ti
                       </span>
                       {label}
                     </span>
-                    <span className="latin truncate text-sm font-semibold text-ice transition-colors group-hover:text-brand-bright">
+                    <span className="latin truncate text-base font-semibold text-ice transition-colors group-hover:text-brand-bright">
                       {value}
                     </span>
                   </a>
@@ -53,7 +53,7 @@ export default function ContactSection({ id = "contact", location = "footer", ti
               ))}
             </ul>
 
-            <p className="mt-5 flex items-center gap-2 text-xs leading-6 text-ice-faint">
+            <p className="mt-5 flex items-center gap-2 text-sm text-ice-muted">
               <Clock className="h-4 w-4 shrink-0" aria-hidden="true" />
               نرد خلال يوم عمل واحد، من الأحد إلى الخميس.
             </p>

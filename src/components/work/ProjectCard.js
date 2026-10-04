@@ -32,7 +32,7 @@ export default function ProjectCard({ project, priority = false, showCategory = 
             className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
           {hasSocialGallery ? (
-            <span className="absolute start-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-[#0c0705]/75 px-2.5 py-1 text-[11px] font-semibold text-[#F7F1E6] backdrop-blur-sm">
+            <span className="absolute start-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-[#0c0705]/75 px-2.5 py-1 text-xs font-semibold text-[#F7F1E6] backdrop-blur-sm">
               <Images className="h-3.5 w-3.5" aria-hidden="true" />
               <span className="latin">{project.gallery.length}</span>
             </span>
@@ -44,10 +44,10 @@ export default function ProjectCard({ project, priority = false, showCategory = 
           ) : null}
         </span>
         <span className="mt-3 block px-0.5">
-          <span className="block text-sm font-bold leading-6 text-ice transition-colors group-hover:text-brand-bright sm:text-base">
+          <span className="block text-base font-bold leading-7 text-ice transition-colors group-hover:text-brand-bright sm:text-lg">
             {project.title}
           </span>
-          <span className="mt-0.5 block text-xs leading-5 text-ice-faint">
+          <span className="mt-0.5 block text-xs text-ice-faint">
             {showCategory ? project.categoryLabel : project.sector}
             {action ? <span className="text-ice-muted"> · {action}</span> : null}
           </span>

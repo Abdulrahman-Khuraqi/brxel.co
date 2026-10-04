@@ -12,14 +12,14 @@ function PackageCard({ pkg }) {
       }`}
     >
       <div className="flex items-start justify-between gap-3">
-        <h3 className="text-lg font-bold text-ice">{pkg.name}</h3>
+        <h3 className="text-h3 font-bold text-ice">{pkg.name}</h3>
         {pkg.popular ? (
-          <span className="shrink-0 rounded-full bg-brand px-3 py-1 text-[11px] font-bold text-[#150C09]">الأكثر طلبًا</span>
+          <span className="shrink-0 rounded-full bg-brand px-3 py-1 text-xs font-bold text-[#150C09]">الأكثر طلبًا</span>
         ) : null}
       </div>
 
-      <p className="mt-2.5 text-sm leading-7 text-ice-muted">{pkg.summary}</p>
-      <p className="mt-4 text-xs font-semibold text-ice-faint">مدة التنفيذ: {pkg.timeline}</p>
+      <p className="mt-2.5 text-sm text-ice-muted">{pkg.summary}</p>
+      <p className="mt-4 text-xs font-semibold text-ice-muted">مدة التنفيذ: {pkg.timeline}</p>
 
       <ul className="mt-6 flex-1 space-y-3 border-t border-hairline pt-6">
         {pkg.features.map((feature) => (
@@ -60,7 +60,7 @@ export default function Packages() {
       <Reveal delay={200}>
         <div className="mt-5 flex flex-col gap-6 rounded-2xl border border-hairline bg-surface p-7 lg:flex-row lg:items-center lg:gap-10">
           <div className="lg:max-w-xs">
-            <p className="flex items-center gap-2 text-base font-bold text-ice">
+            <p className="flex items-center gap-2 text-h3 font-bold text-ice">
               <LifeBuoy className="h-5 w-5 shrink-0 text-brand-bright" aria-hidden="true" strokeWidth={1.75} />
               {retainer.name}
             </p>

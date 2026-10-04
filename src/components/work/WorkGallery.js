@@ -97,7 +97,7 @@ export default function WorkGallery() {
             <span className="latin text-xs text-ice-faint">{remaining}</span>
           </button>
         ) : null}
-        <p className="text-xs text-ice-faint">نضيف أعمالًا جديدة باستمرار.</p>
+        <p className="text-sm text-ice-muted">نضيف أعمالًا جديدة باستمرار.</p>
       </div>
     </div>
   );

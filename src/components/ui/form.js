@@ -97,7 +97,7 @@ function FormDescription({ className, ...props }) {
     <p
       data-slot="form-description"
       id={formDescriptionId}
-      className={cn("text-xs leading-5 text-ice-faint", className)}
+      className={cn("text-xs text-ice-faint", className)}
       {...props}
     />
   );
@@ -114,7 +114,7 @@ function FormMessage({ className, children, ...props }) {
       data-slot="form-message"
       id={formMessageId}
       role={error ? "alert" : undefined}
-      className={cn("flex items-center gap-1.5 text-xs font-medium leading-5 text-error", className)}
+      className={cn("flex items-center gap-1.5 text-sm font-medium leading-6 text-error", className)}
       {...props}
     >
       {error ? <AlertCircle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" /> : null}

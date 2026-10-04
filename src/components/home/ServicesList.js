@@ -35,9 +35,9 @@ export default function ServicesList() {
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand-bright">
                 <ServiceIcon name={service.icon} />
               </span>
-              <h3 className="mt-6 text-lg font-bold leading-8 text-ice">{service.title}</h3>
-              <p className="mt-2 flex-1 text-sm leading-7 text-ice-muted">{service.summary}</p>
-              <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-ice-faint transition-colors group-hover:text-brand-bright">
+              <h3 className="mt-6 text-h3 font-bold text-ice">{service.title}</h3>
+              <p className="mt-2 flex-1 text-sm text-ice-muted">{service.summary}</p>
+              <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-ice-muted transition-colors group-hover:text-brand-bright">
                 {service.timeline}
                 <ArrowLeft className="ms-auto h-4 w-4 transition-transform group-hover:-translate-x-1 motion-reduce:transition-none" aria-hidden="true" />
               </span>
@@ -50,11 +50,11 @@ export default function ServicesList() {
             href="#contact"
             className="group flex h-full flex-col rounded-2xl bg-brand p-6 text-[#150C09] transition hover:bg-brand-bright motion-reduce:transition-none"
           >
-            <h3 className="text-lg font-bold leading-8">لست متأكدًا مما تحتاجه؟</h3>
-            <p className="mt-2 flex-1 text-sm leading-7 text-[#150C09]/75">
+            <h3 className="text-h3 font-bold">لست متأكدًا مما تحتاجه؟</h3>
+            <p className="mt-2 flex-1 text-sm text-[#150C09]/80">
               احكِ لنا عن فكرتك، ونقترح عليك الخدمة الأنسب لمرحلتك.
             </p>
-            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold">
+            <span className="mt-5 inline-flex items-center gap-1.5 text-base font-bold">
               استشرنا مجانًا
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1 motion-reduce:transition-none" aria-hidden="true" />
             </span>

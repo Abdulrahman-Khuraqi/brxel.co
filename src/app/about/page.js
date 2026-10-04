@@ -40,8 +40,8 @@ export default function AboutPage() {
             <Reveal key={item.title} as="li" delay={index * 70} className="h-full">
               <div className="h-full rounded-2xl border border-hairline bg-surface p-7">
                 <span className="latin text-sm font-bold text-brand-bright">{String(index + 1).padStart(2, "0")}</span>
-                <h3 className="mt-4 text-lg font-bold text-ice">{item.title}</h3>
-                <p className="mt-2 text-sm leading-7 text-ice-muted">{item.body}</p>
+                <h3 className="mt-4 text-h3 font-bold text-ice">{item.title}</h3>
+                <p className="mt-2 text-sm text-ice-muted">{item.body}</p>
               </div>
             </Reveal>
           ))}
@@ -59,7 +59,7 @@ export default function AboutPage() {
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand-bright">
                   <ServiceIcon name={service.icon} />
                 </span>
-                <span className="text-sm font-semibold leading-7 text-ice">{service.title}</span>
+                <span className="text-base font-semibold text-ice">{service.title}</span>
               </a>
             </Reveal>
           ))}
