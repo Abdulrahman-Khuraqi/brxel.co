@@ -6,6 +6,3 @@ export const retainer = catalog.retainer;
 
 export const serviceCount = services.length;
 
-/** Currency shown next to every price on the site. */
-export const CURRENCY = "ر.س";
-

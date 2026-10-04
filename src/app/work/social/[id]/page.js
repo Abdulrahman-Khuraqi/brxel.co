@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import PageHeader from "@/components/layout/PageHeader";
 import SocialProjectGallery from "@/components/work/SocialProjectGallery";
-import ContactCta from "@/components/ContactCta";
+import ContactSection from "@/components/contact/ContactSection";
 import { socialProjects } from "@/lib/projects";
 
 export function generateStaticParams() {
@@ -41,7 +41,7 @@ export default async function SocialProjectPage({ params }) {
       </PageHeader>
 
       <SocialProjectGallery project={project} />
-      <ContactCta />
+      <ContactSection location="social-project" />
     </>
   );
 }

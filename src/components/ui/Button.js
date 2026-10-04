@@ -4,7 +4,7 @@ const BASE =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition duration-200 motion-reduce:transition-none sm:text-base";
 
 const VARIANTS = {
-  primary: "brand-gradient text-[#150C09] shadow-[0_10px_30px_-12px_rgb(242_161_44/0.6)] hover:brightness-110",
+  primary: "bg-brand text-[#150C09] font-bold hover:bg-brand-bright",
   secondary: "border border-hairline-strong bg-surface text-ice hover:border-brand hover:bg-surface-hover hover:text-brand-bright",
   ghost: "text-ice-muted hover:bg-surface hover:text-ice",
 };

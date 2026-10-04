@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X, Mail } from "lucide-react";
+import { ArrowLeft, Menu, X } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { brand, nav, navEn } from "@/lib/site";
 
@@ -34,11 +34,11 @@ export default function Header() {
     <header lang={isEnglish ? "en" : "ar"} dir={isEnglish ? "ltr" : "rtl"}
       className={`sticky top-0 z-50 border-b transition-colors duration-300 motion-reduce:transition-none ${
         scrolled || menuOpen
-          ? "border-hairline bg-navy/90 backdrop-blur-xl"
-          : "border-transparent bg-navy/50 backdrop-blur-sm"
+          ? "border-hairline bg-void/90 backdrop-blur-xl"
+          : "border-transparent bg-void/60 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-5 sm:h-18 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-5 sm:h-18 sm:px-8">
         <Link href={homeHref} className="shrink-0 rounded-lg" aria-label={`${brand.name} — ${isEnglish ? "Home" : "الرئيسية"}`}>
           <Logo className="h-5 w-auto sm:h-6" />
         </Link>
@@ -63,10 +63,10 @@ export default function Header() {
         <div className="ms-auto flex items-center gap-2 md:ms-0">
           <Link
             href={contactHref}
-            className="hidden min-h-11 items-center gap-2 rounded-xl border border-hairline-strong bg-surface px-4 text-sm font-semibold text-ice transition duration-200 hover:border-brand hover:text-brand-bright motion-reduce:transition-none sm:inline-flex"
+            className="hidden min-h-10 items-center gap-2 rounded-xl bg-brand px-4 text-sm font-bold text-[#150C09] transition duration-200 hover:bg-brand-bright motion-reduce:transition-none sm:inline-flex"
           >
-            <Mail className="h-4 w-4" aria-hidden="true" />
-            {isEnglish ? "Contact us" : "تواصل معنا"}
+            {isEnglish ? "Start a project" : "ابدأ مشروعك"}
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           </Link>
 
           <button
@@ -86,7 +86,7 @@ export default function Header() {
         <nav
           id="mobile-nav"
           aria-label={isEnglish ? "Main navigation" : "التنقل الرئيسي"}
-          className="border-t border-hairline bg-navy px-5 py-3 md:hidden"
+          className="border-t border-hairline bg-void px-5 py-3 md:hidden"
         >
           {activeNav.map((link) => (
             <Link
@@ -102,10 +102,10 @@ export default function Header() {
           ))}
           <Link
             href={contactHref}
-            className="mt-2 flex min-h-11 items-center gap-2 rounded-lg px-3 py-3 text-sm font-semibold text-brand-bright"
+            className="mt-2 flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-3 py-3 text-sm font-bold text-[#150C09]"
           >
-            <Mail className="h-4 w-4" aria-hidden="true" />
-            {isEnglish ? "Contact us" : "تواصل معنا"}
+            {isEnglish ? "Start a project" : "ابدأ مشروعك"}
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           </Link>
         </nav>
       ) : null}

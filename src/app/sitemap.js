@@ -1,9 +1,10 @@
 import { LEGAL_UPDATED } from "@/lib/legal";
+import { brand } from "@/lib/site";
 
 // `output: "export"` needs the sitemap generated at build time, not per request.
 export const dynamic = "force-static";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || `https://${brand.domain}`;
 
 const ROUTES = [
   { path: "/", priority: 1 },

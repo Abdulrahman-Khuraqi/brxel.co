@@ -287,173 +287,11 @@ body {
   mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
 }
 
-/* Single-direction engraving hatch — 313.763°, 2mm pitch, 0.09mm line.
-   1mm = 3.7795px @96dpi, so pitch = 7.559px and line = 0.34px. */
-.hatch {
-  background-image: repeating-linear-gradient(
-    313.763deg,
-    var(--hatch-color, rgb(247 241 230 / 0.7)) 0 0.34px,
-    transparent 0.34px 7.559px
-  );
-}
-.on-light .hatch {
-  --hatch-color: rgb(21 12 9 / 0.6);
-}
-
-/* Halftone dot field — a nod to print screens. Used behind headers. */
-.halftone {
-  background-image: radial-gradient(rgb(247 241 230 / 0.14) 1.1px, transparent 1.2px);
-  background-size: 22px 22px;
-  -webkit-mask-image: radial-gradient(60% 60% at 50% 40%, #000, transparent 100%);
-  mask-image: radial-gradient(60% 60% at 50% 40%, #000, transparent 100%);
-}
-.on-light .halftone {
-  background-image: radial-gradient(rgb(21 12 9 / 0.1) 1.1px, transparent 1.2px);
-}
-
 /* ------------------------------------------------------------------ */
-/*  Hero motion                                                        */
+/*  Motion                                                             */
 /*                                                                     */
-/*  Every animation here is decorative and compositor-friendly         */
-/*  (transform / opacity / background-position only). The whole block   */
-/*  is switched off under prefers-reduced-motion further down.         */
+/*  Decorative only, and switched off under prefers-reduced-motion.    */
 /* ------------------------------------------------------------------ */
-
-/* The grid drifts one cell downward, forever — a slow sense of travel. */
-@keyframes grid-drift {
-  from { background-position: 0 0, 0 0; }
-  to { background-position: 0 0, 0 56px; }
-}
-.tech-grid-drift {
-  animation: grid-drift 16s linear infinite;
-}
-
-/* Two ember clouds breathing out of phase, so the glow never loops visibly. */
-@keyframes aurora-a {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
-  50% { transform: translate3d(-4%, 3%, 0) scale(1.15); opacity: 1; }
-}
-@keyframes aurora-b {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1.1); opacity: 0.7; }
-  50% { transform: translate3d(5%, -3%, 0) scale(1); opacity: 1; }
-}
-.aurora-a {
-  background-image: radial-gradient(46rem 26rem at 78% -6%, rgb(242 161 44 / 0.28), transparent 62%);
-  animation: aurora-a 19s ease-in-out infinite;
-}
-.aurora-b {
-  background-image: radial-gradient(38rem 24rem at 8% 10%, rgb(141 34 10 / 0.4), transparent 66%);
-  animation: aurora-b 23s ease-in-out infinite;
-}
-
-/* A wide highlight sweeping across the band every few seconds. */
-@keyframes beam-sweep {
-  0% { transform: translateX(-60%) skewX(-14deg); opacity: 0; }
-  35% { opacity: 0.5; }
-  100% { transform: translateX(160%) skewX(-14deg); opacity: 0; }
-}
-.beam {
-  background-image: linear-gradient(
-    90deg,
-    transparent,
-    rgb(242 161 44 / 0.16),
-    rgb(247 241 230 / 0.08),
-    transparent
-  );
-  animation: beam-sweep 9s ease-in-out infinite;
-}
-
-/* The gradient in the headline slides slowly across the word. */
-@keyframes gradient-slide {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-.brand-gradient-text-animated {
-  background-size: 220% auto;
-  animation: gradient-slide 7s ease-in-out infinite;
-}
-
-@keyframes scroll-cue {
-  0%, 100% { transform: translateY(0); opacity: 0.55; }
-  50% { transform: translateY(6px); opacity: 1; }
-}
-.scroll-cue {
-  animation: scroll-cue 2.2s ease-in-out infinite;
-}
-
-/* Marquee for the client strip. */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-.marquee-track {
-  animation: marquee 58s linear infinite;
-}
-@media (hover: hover) {
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
-  }
-}
-
-/* ------------------------------------------------------------------ */
-/*  Interaction                                                        */
-/* ------------------------------------------------------------------ */
-.card-hover {
-  transition:
-    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 220ms ease,
-    background-color 220ms ease,
-    box-shadow 220ms ease;
-}
-
-/* The lead service in the editorial catalogue behaves like a dark spread
-   inside the light section. */
-.service-card-featured {
-  --color-ice: #f7f1e6;
-  --color-ice-muted: #c9bcac;
-  --color-ice-faint: #a99b8c;
-  --color-hairline: rgb(247 241 230 / 0.14);
-  --color-hairline-strong: rgb(247 241 230 / 0.26);
-  --color-surface: rgb(247 241 230 / 0.06);
-  --color-surface-hover: rgb(247 241 230 / 0.1);
-  --color-brand-bright: #f7bd5c;
-
-  background-color: #1c110c;
-  background-image:
-    radial-gradient(28rem 18rem at 100% 0%, rgb(242 161 44 / 0.24), transparent 65%),
-    linear-gradient(145deg, rgb(247 241 230 / 0.035), transparent 55%);
-  box-shadow: 0 24px 60px -32px rgb(21 12 9 / 0.7);
-}
-
-/* Portfolio folders: the tab and body travel together while the internal
-   collage keeps its own restrained image motion. */
-.work-folder {
-  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-@media (hover: hover) and (pointer: fine) {
-  .work-folder:hover {
-    transform: translateY(-5px);
-  }
-  .work-folder:hover article {
-    border-color: rgb(242 161 44 / 0.45);
-    box-shadow: 0 30px 70px -38px rgb(242 161 44 / 0.5);
-  }
-}
-@media (hover: hover) and (pointer: fine) {
-  .card-hover:hover {
-    transform: translateY(-4px);
-    border-color: var(--color-hairline-strong);
-    background-color: var(--color-surface-hover);
-    box-shadow: var(--shadow-lift);
-  }
-}
-
-/* Oversized editorial numerals on the full-bleed impact strip. */
-.stat-strip-number {
-  color: #ffffff;
-  text-shadow: 0 12px 36px rgb(61 11 0 / 0.24);
-}
-
 /* Entrance reveal, driven by IntersectionObserver in components/ui/Reveal.js. */
 .reveal {
   opacity: 0;
@@ -472,6 +310,15 @@ body {
   transform: none;
 }
 
+/* "Available" status dot in the hero. */
+@keyframes pulse-dot {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+.pulse-dot {
+  animation: pulse-dot 1.8s ease-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -481,23 +328,8 @@ body {
     transform: none;
     transition: none;
   }
-  .card-hover,
-  .card-hover:hover,
-  .work-folder,
-  .work-folder:hover {
-    transition: none;
-    transform: none;
-  }
-  .tech-grid-drift,
-  .aurora-a,
-  .aurora-b,
-  .brand-gradient-text-animated,
-  .scroll-cue,
-  .marquee-track {
+  .pulse-dot {
     animation: none;
-  }
-  .beam {
-    display: none;
   }
 }
 
@@ -552,90 +384,18 @@ select.field option {
 }
 
 /* ------------------------------------------------------------------ */
-/*  BRXEL home: hero fan, seal, slash rules, tilted marquee           */
+/*  Thank-you page                                                     */
 /* ------------------------------------------------------------------ */
-
-/* Faint rules at 66° from the baseline — the angle of the X's stroke. */
-.slash-rules {
-  background-image: repeating-linear-gradient(
-    114deg,
-    rgb(247 241 230 / 0.045) 0 1px,
-    transparent 1px 64px
-  );
-  -webkit-mask-image: radial-gradient(80% 70% at 50% 30%, #000, transparent 100%);
-  mask-image: radial-gradient(80% 70% at 50% 30%, #000, transparent 100%);
+@keyframes success-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
 }
-
-@keyframes pulse-dot {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(3); opacity: 0; }
+.success-pop {
+  animation: success-pop 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
-.pulse-dot {
-  animation: pulse-dot 1.8s ease-out infinite;
-}
-
-@keyframes seal-spin {
-  to { transform: rotate(360deg); }
-}
-.seal-spin {
-  animation: seal-spin 24s linear infinite;
-}
-
-/* Five cards fanned from a common centre. --i: offset from centre, --a: |--i|. */
-.hero-fan {
-  --card: clamp(12.5rem, 33vw, 25rem);
-  --step: clamp(7.5rem, 21vw, 16rem);
-}
-.hero-fan-card {
-  position: absolute;
-  bottom: -2rem;
-  left: 50%;
-  width: var(--card);
-  aspect-ratio: 1;
-  z-index: calc(10 - var(--a));
-  transform: translateX(calc(-50% - var(--i) * var(--step))) translateY(calc(var(--a) * 2.4rem))
-    rotate(calc(var(--i) * -7deg)) scale(calc(1.08 - var(--a) * 0.06));
-  animation: fan-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  animation-delay: calc(250ms + var(--a) * 110ms);
-}
-@keyframes fan-in {
-  from { opacity: 0; translate: 0 5rem; }
-  to { opacity: 1; translate: 0 0; }
-}
-.hero-fan-inner {
-  height: 100%;
-  overflow: hidden;
-  border-radius: 1.75rem;
-  border: 1px solid rgb(247 241 230 / 0.12);
-  background: #1c110c;
-  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.9);
-  transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-@media (hover: hover) {
-  .hero-fan-card:hover {
-    z-index: 20;
-  }
-  .hero-fan-card:hover .hero-fan-inner {
-    transform: translateY(-1.25rem);
-  }
-}
-
-/* Tilted marquee: the back band runs the other way in outlined type. */
-.marquee-reverse .marquee-track {
-  animation-direction: reverse;
-}
-.text-outline {
-  color: transparent;
-  -webkit-text-stroke: 1px rgb(247 241 230 / 0.35);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .pulse-dot,
-  .seal-spin,
-  .hero-fan-card {
+  .success-pop {
     animation: none;
-  }
-  .hero-fan-inner {
-    transition: none;
   }
 }

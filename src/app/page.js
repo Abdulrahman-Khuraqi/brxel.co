@@ -1,21 +1,19 @@
 import Hero from "@/components/home/Hero";
-import HomeMarquee from "@/components/home/HomeMarquee";
 import ServicesList from "@/components/home/ServicesList";
-import Stats from "@/components/home/Stats";
-import WorkGrid from "@/components/home/WorkGrid";
+import FeaturedWork from "@/components/home/FeaturedWork";
+import Process from "@/components/home/Process";
 import ClientStrip from "@/components/home/ClientStrip";
-import HomeContact from "@/components/home/HomeContact";
+import ContactSection from "@/components/contact/ContactSection";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <HomeMarquee />
       <ServicesList />
-      <WorkGrid />
-      <Stats />
+      <FeaturedWork />
+      <Process />
       <ClientStrip />
-      <HomeContact />
+      <ContactSection location="home" />
     </>
   );
 }

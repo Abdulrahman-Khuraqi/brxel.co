@@ -1,119 +1,114 @@
-import { ArrowLeft, ArrowUpLeft } from "lucide-react";
-import Button from "@/components/ui/Button";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import { Spark } from "@/components/ui/Logo";
+import { featuredProjects } from "@/lib/projects";
 
-/** Five real projects fanned under the headline; `i` is the offset from the centre card. */
-const FAN = [
-  { i: -2, src: "/work/print/print-1.png", alt: "بطاقات أعمال معهد ليلون" },
-  { i: -1, src: "/work/social/chocosarayi.webp", alt: "تصميم سوشيال ميديا لشوكولاتة سرايا" },
-  { i: 0, src: "/work/web/hm.webp", alt: "واجهات موقع استوديو هيفاء المعمر" },
-  { i: 1, src: "/work/social/pegas.webp", alt: "منشور سوشيال ميديا لوكالة بيغاس" },
-  { i: 2, src: "/work/web/ensha.webp", alt: "واجهات منصة إنشاء العقارية" },
+const STATS = [
+  { value: "+380", label: "مشروع مُنجز" },
+  { value: "+120", label: "عميل" },
+  { value: "+60", label: "هوية بصرية" },
 ];
 
-/** A slowly turning seal that links to the brief form. */
-function Seal() {
-  return (
-    <a
-      href="/contact/"
-      aria-label="ابدأ مشروعك"
-      className="group absolute -left-10 -top-10 z-20 flex h-28 w-28 items-center justify-center rounded-full bg-void/85 shadow-[0_18px_40px_-16px_rgb(0_0_0/0.9)] backdrop-blur-sm sm:-left-14 sm:-top-14 sm:h-36 sm:w-36"
-    >
-      <svg viewBox="0 0 160 160" className="seal-spin absolute inset-0 h-full w-full text-ice-muted" aria-hidden="true">
-        <defs>
-          <path id="seal-ring" d="M80 80 m-62 0 a62 62 0 1 1 124 0 a62 62 0 1 1 -124 0" />
-        </defs>
-        <text fontSize="11.5" fontWeight="600" fill="currentColor" style={{ direction: "ltr" }}>
-          <textPath href="#seal-ring" textLength="386" lengthAdjust="spacing">BRXEL · GRAPHIC DESIGN · SAUDI ARABIA ·</textPath>
-        </text>
-      </svg>
-      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand sm:h-16 sm:w-16 text-[#150C09] transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none">
-        <ArrowUpLeft className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.25} aria-hidden="true" />
-      </span>
-    </a>
-  );
-}
-
+/** Headline, one line of pitch, two actions — and four real projects beside it. */
 export default function Hero() {
+  const mosaic = featuredProjects.slice(0, 4);
+
   return (
     <section className="relative isolate overflow-hidden bg-void">
-      {/* Ground: ink, a gold glow from above, and faint 66° rules — the angle of the X. */}
       <div
-        className="absolute inset-0 bg-[radial-gradient(70%_55%_at_50%_-5%,rgb(242_161_44/0.2),transparent_70%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(60%_55%_at_80%_-10%,rgb(242_161_44/0.16),transparent_70%)]"
         aria-hidden="true"
       />
-      <div className="slash-rules absolute inset-0 opacity-60" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-6xl px-5 pt-14 text-center sm:px-6 sm:pt-20">
-        <Reveal>
-          <p className="inline-flex items-center gap-2.5 rounded-full border border-hairline-strong bg-surface px-4 py-1.5 text-xs font-semibold text-ice-muted">
-            <span className="relative flex h-2 w-2" aria-hidden="true">
-              <span className="pulse-dot absolute inset-0 rounded-full bg-brand" />
-              <span className="relative h-2 w-2 rounded-full bg-brand" />
-            </span>
-            متاحون لمشاريع جديدة هذا الشهر
-          </p>
-        </Reveal>
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-12 sm:px-8 sm:pb-28 sm:pt-20 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-16">
+        <div>
+          <Reveal>
+            <p className="inline-flex items-center gap-2.5 rounded-full border border-hairline bg-surface px-3.5 py-1.5 text-xs font-semibold text-ice-muted">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="pulse-dot absolute inset-0 rounded-full bg-success" />
+                <span className="relative h-2 w-2 rounded-full bg-success" />
+              </span>
+              متاحون لمشاريع جديدة
+            </p>
+          </Reveal>
 
-        <Reveal delay={90}>
-          <div className="mt-8">
-            <h1 className="text-[clamp(3.1rem,11vw,8.75rem)] font-bold leading-[1.28] tracking-[-0.01em] text-ice">
+          <Reveal delay={80}>
+            <h1 className="mt-6 text-[clamp(2.5rem,6.2vw,4.5rem)] font-bold leading-[1.25] text-ice">
               فنٌّ في
-              <span className="flex items-center justify-center gap-[0.12em]">
-                <Spark className="h-[0.62em] w-[0.62em] shrink-0 text-brand" />
+              <span className="flex items-center gap-[0.15em]">
                 <span className="headline-accent">كل بكسل</span>
+                <Spark className="h-[0.5em] w-[0.5em] shrink-0 text-brand" />
               </span>
             </h1>
-          </div>
-        </Reveal>
+          </Reveal>
 
-        <Reveal delay={180}>
-          <p className="mx-auto mt-7 max-w-xl text-base leading-8 text-ice-muted sm:text-lg">
-            تصميم جرافيكي سعودي: هوية بصرية، سوشيال ميديا، مطبوعات وواجهات، بنطاق عمل مكتوب
-            وملفات تسليم تملكها بالكامل.
-          </p>
-        </Reveal>
+          <Reveal delay={160}>
+            <p className="mt-5 max-w-lg text-base leading-8 text-ice-muted sm:text-lg sm:leading-9">
+              استوديو تصميم جرافيكي: هوية بصرية، سوشيال ميديا، مطبوعات وواجهات مواقع. نطاق عمل مكتوب، وملفات
+              تسليم تملكها بالكامل.
+            </p>
+          </Reveal>
 
-        <Reveal delay={260}>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-            <Button href="/contact/" className="px-7 py-3.5 text-base">
-              ابدأ مشروعك
-              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            </Button>
-            <a
-              href="/work/"
-              className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-hairline-strong px-6 text-sm font-semibold text-ice transition hover:border-brand hover:text-brand-bright motion-reduce:transition-none"
-            >
-              تصفّح الأعمال
-            </a>
-          </div>
-        </Reveal>
-      </div>
-
-      {/* The fan: real work, not stock. */}
-      <div className="hero-fan relative mx-auto mt-10 h-[clamp(18rem,47vw,35rem)] max-w-7xl sm:mt-12" aria-label="من أعمالنا">
-        {FAN.map((card, n) => (
-          <figure
-            key={card.src}
-            className={`hero-fan-card ${Math.abs(card.i) === 2 ? "hidden sm:block" : ""}`}
-            style={{ "--i": card.i, "--a": Math.abs(card.i), "--n": n }}
-          >
-            {card.i === 0 ? <Seal /> : null}
-            <div className="hero-fan-inner">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={card.src}
-                alt={card.alt}
-                width={600}
-                height={600}
-                loading={card.i === 0 ? "eager" : "lazy"}
-                className="h-full w-full object-cover"
-              />
+          <Reveal delay={240}>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                href="#contact"
+                className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-brand px-6 text-base font-bold text-[#150C09] transition hover:bg-brand-bright motion-reduce:transition-none"
+              >
+                احصل على عرضك
+                <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <Link
+                href="/work/"
+                className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-hairline-strong px-6 text-sm font-semibold text-ice transition hover:border-brand hover:text-brand-bright motion-reduce:transition-none"
+              >
+                شاهد أعمالنا
+              </Link>
             </div>
-          </figure>
-        ))}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-b from-transparent to-void" aria-hidden="true" />
+          </Reveal>
+
+          <Reveal delay={320}>
+            <dl className="mt-12 grid max-w-md grid-cols-3 divide-x divide-hairline border-t border-hairline pt-6">
+              {STATS.map((stat, index) => (
+                <div key={stat.label} className={index === 0 ? "pe-4" : "px-4"}>
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd>
+                    <span className="latin block text-2xl font-bold text-ice sm:text-3xl">{stat.value}</span>
+                    <span className="mt-1 block text-xs text-ice-faint">{stat.label}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        </div>
+
+        <Reveal delay={120}>
+          <div className="grid grid-cols-2 gap-3 sm:gap-4" aria-label="من أعمالنا">
+            {mosaic.map((project, index) => (
+              <Link
+                key={project.id}
+                href="/work/"
+                className={`group relative block aspect-square overflow-hidden rounded-2xl border border-hairline bg-navy-raised ${
+                  index % 2 === 1 ? "translate-y-6 sm:translate-y-10" : ""
+                }`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={project.image}
+                  alt={`${project.title} — ${project.categoryLabel}`}
+                  width={600}
+                  height={600}
+                  loading={index < 2 ? "eager" : "lazy"}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04] motion-reduce:transition-none"
+                />
+                <span className="absolute bottom-2.5 start-2.5 rounded-full bg-[#0c0705]/75 px-2.5 py-1 text-[11px] font-semibold text-[#F7F1E6] backdrop-blur-sm">
+                  {project.categoryLabel}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

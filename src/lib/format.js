@@ -25,7 +25,3 @@ export function formatDate(iso) {
   return `${day} ${MONTHS_AR[month - 1]} ${year}`;
 }
 
-/** Groups thousands with a comma: 14000 -> "14,000". */
-export function formatAmount(value) {
-  return Number(value).toLocaleString("en-US");
-}

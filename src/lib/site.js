@@ -8,32 +8,13 @@ export const brand = {
   owner: "BRXEL",
   tagline: "DESIGN THAT SHIPS.",
   shortPitch:
-    "خدمات تصميم جرافيكي: هوية بصرية، سوشيال ميديا، مطبوعات، ومواقع إلكترونية، بنطاق عمل واضح ومخرجات محددة.",
-  email: "shoate2013@gmail.com",
-  phone: "0533036414",
-  /** International form without "+", used for wa.me links. */
-  whatsapp: "966533036414",
-  country: "المملكة العربية السعودية",
-  city: "المملكة العربية السعودية",
-};
-
-/**
- * Freelance practitioner licence issued by the Ministry of Human Resources and
- * Social Development: the official registration to practise graphic
- * design. Replaces the commercial-register / VAT block of the old business.
- * The holder's national ID is on the certificate but deliberately not published.
- */
-export const licence = {
-  holder: "سعيد مشبب محمد القحطاني",
-  holderEn: "Saeed Mushabbab Mohammed Alqahtani",
-  documentId: "FL-705484607",
-  category: "الخدمات التخصصية",
-  speciality: "تصميم الجرافيك",
-  issuer: "وزارة الموارد البشرية والتنمية الاجتماعية",
-  issued: "2026-09-24",
-  expires: "2027-09-24",
-  /** Public copy of the certificate, national ID redacted. */
-  file: "/docs/artxel-freelance-certificate.pdf",
+    "استوديو تصميم جرافيكي: هوية بصرية، سوشيال ميديا، مطبوعات، وواجهات مواقع، بنطاق عمل واضح ومخرجات محددة.",
+  domain: "brxel.co",
+  email: "hello@brxel.co",
+  /** Display form, written left to right. */
+  phone: "+963 941 581 406",
+  /** International form without "+", used for wa.me and tel: links. */
+  whatsapp: "963941581406",
 };
 
 export const contactLinks = {

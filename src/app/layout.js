@@ -2,10 +2,11 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SkipToContent from "@/components/layout/SkipToContent";
+import { Toaster } from "@/components/ui/sonner";
 import { brand } from "@/lib/site";
 import { services } from "@/lib/services";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || `https://${brand.domain}`;
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -24,7 +25,6 @@ export const metadata = {
     "تصميم تغليف",
     "موشن جرافيك",
     "BRXEL",
-    "السعودية",
   ],
   authors: [{ name: brand.owner }],
   creator: brand.name,
@@ -32,7 +32,7 @@ export const metadata = {
   category: "Graphic design services",
   openGraph: {
     type: "website",
-    locale: "ar_SA",
+    locale: "ar",
     siteName: brand.name,
     title: "BRXEL | تصميم جرافيكي",
     description: brand.shortPitch,
@@ -46,7 +46,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#150C09",
+  themeColor: "#0C0705",
 };
 
 const organizationSchema = {
@@ -57,8 +57,6 @@ const organizationSchema = {
   url: siteUrl,
   email: brand.email,
   telephone: `+${brand.whatsapp}`,
-  address: { "@type": "PostalAddress", addressCountry: "SA" },
-  areaServed: { "@type": "Country", name: "Saudi Arabia" },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: `خدمات ${brand.name}`,
@@ -84,6 +82,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );

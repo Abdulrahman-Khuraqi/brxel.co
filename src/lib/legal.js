@@ -1,5 +1,5 @@
 import policies from "@/data/policies.json";
-import { brand, licence } from "@/lib/site";
+import { brand } from "@/lib/site";
 
 export const LEGAL_UPDATED = "2026-09-29";
 export const legalOrder = ["terms", "privacy", "refunds"];
@@ -11,8 +11,7 @@ export const legalOrder = ["terms", "privacy", "refunds"];
 const contactSection = {
   h: "التواصل",
   p: [
-    `لأي استفسار بخصوص هذه السياسة، تواصل معنا عبر البريد الإلكتروني ${brand.email} أو واتساب ${brand.phone}.`,
-    `${brand.name}: خدمات تصميم جرافيكي في ${brand.country}، يقدّمها الممارس الحر ${licence.holder} بوثيقة عمل حر رقم ${licence.documentId}.`,
+    `لأي استفسار بخصوص هذه السياسة، تواصل معنا عبر البريد الإلكتروني ${brand.email} أو واتساب \u2066${brand.phone}\u2069.`,
   ],
 };
 

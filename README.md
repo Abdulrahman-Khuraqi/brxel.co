@@ -1,7 +1,7 @@
 # BRXEL — Website
 
-Marketing and enquiry site for **BRXEL**, a Saudi graphic-design studio.
-a Saudi establishment offering custom web, software and AI development services.
+Marketing and enquiry site for **BRXEL** (brxel.co), a graphic-design studio: brand identity,
+social media, print and web.
 
 Arabic only and right-to-left.
 
@@ -15,18 +15,19 @@ npm run dev
 `npm run build` produces a fully static site in `out/` (`output: "export"`), so it can be
 hosted on any static host — no Node server required.
 
-Set `NEXT_PUBLIC_SITE_URL` before building so canonical URLs, Open Graph tags and
-`sitemap.xml` point at the real domain.
+Canonical URLs, Open Graph tags and `sitemap.xml` default to `https://brxel.co`; set
+`NEXT_PUBLIC_SITE_URL` to override (for a staging domain, say).
 
 ## Routes
 
 | Route | Contents |
 |---|---|
-| `/` | Hero, services, web packages, process, work, why BRXEL, enquiry form |
-| `/services/` | Every service in full: scope, exclusions and timeline |
-| `/work/` | Every delivered project, with a link to each live site |
+| `/` | Hero, services, featured work, process, clients, enquiry form |
+| `/services/` | Every service in full (scope, exclusions, timeline), packages, process |
+| `/work/` | Every delivered project, filterable by discipline |
+| `/thank-you/` | Shown after the enquiry form, with the request id (`?id=BRX-…`) |
 | `/references/` | Curated agency websites, templates, and inspiration feeds |
-| `/about/` | Company story, commercial register, licensed activities |
+| `/about/` | Studio principles and services |
 | `/contact/` | Enquiry form and direct contact channels |
 | `/terms/`, `/privacy/`, `/refunds/` | Policies |
 
@@ -40,7 +41,8 @@ All routes are prerendered at build time.
 | Services and packages | `src/data/services.json` (read via `src/lib/services.js`) |
 | Delivered projects | `src/data/projects.json` (read via `src/lib/projects.js`) |
 | Policy text | `src/data/policies.json` (read via `src/lib/legal.js`) |
-| Enquiry validation and message building | `src/lib/contact.js` |
+| Enquiry schema (Zod), steps, request id, submission | `src/lib/contact.js` |
+| Data-layer helper | `src/lib/analytics.js` |
 | Design tokens, light/dark bands, animation | `src/app/globals.css` |
 
 Every piece of company data has exactly one source. Change the JSON or `site.js` and the UI,
@@ -48,8 +50,9 @@ the structured data in `layout.js` and the WhatsApp message all follow.
 
 ## Design system
 
-The palette follows the BRXEL brand ratio: roughly 60% black/navy ground, 30% ice-white
-type, 10% blue accent.
+Ink ground, cream type and one Sun-gold accent. One container width (`max-w-6xl`), one
+section rhythm (`<Section>`), and a short type scale: page titles at 2–2.75rem, section titles
+at 1.75–2.25rem, body at 16–18px.
 
 - Tokens are declared once in `@theme` and consumed through Tailwind utilities
   (`text-ice`, `bg-surface`, `border-hairline`, …).
@@ -60,33 +63,49 @@ type, 10% blue accent.
 
 ## Motion
 
-Hero motion is decorative and compositor-only (transform, opacity, background-position).
-`HeroNetwork.js` draws the node constellation on a canvas and stops its animation frame
-loop whenever the tab is hidden or the hero scrolls out of view. Everything is disabled
-under `prefers-reduced-motion`, and `Reveal` falls back to fully visible content.
+Motion is kept to entrance reveals (`Reveal`), hover lifts and the hero's status dot. All of
+it is disabled under `prefers-reduced-motion`, and `Reveal` falls back to fully visible content.
 
 ## Enquiries
 
-There is no payment gateway and no server. The enquiry form validates in the browser,
-formats the answers as plain text, and hands the message to WhatsApp (`wa.me`) or the
-visitor's mail client. Nothing is charged on the site.
+There is no payment gateway and nothing is charged on the site. Prices are not published:
+every project is quoted in a written scope.
+
+The enquiry form (`src/components/contact/EnquiryForm.js`) closes every main page. It is built
+on React Hook Form + Zod + shadcn/ui (`src/components/ui/form.js`, `sonner.js`) and runs in
+three steps — service, project, contact details — with a progress bar, validation as you type,
+and "next"/"submit" buttons that stay disabled until their step is valid.
+
+On submit it creates a request id (`BRX-YYMMDD-XXXX`) and redirects to `/thank-you/?id=…`.
+
+- **With `NEXT_PUBLIC_FORM_ENDPOINT` set**, the enquiry is POSTed there as JSON
+  (`requestId`, `service`, `timeline`, `details`, `name`, `email`, `phone`, `message`, `source`)
+  and the thank-you page confirms it was received.
+- **Without it** (the current state, until the brxel.co mailbox is set up), the thank-you page
+  asks the visitor to send the prepared message through WhatsApp or email, so no enquiry is lost.
+
+### Data layer
+
+Every stage is pushed to `window.dataLayer` (ready for Google Tag Manager), without personal data:
+`form_start`, `form_step_complete` (`step_number`, `step_name`), `form_submit`,
+`form_submit_success` (`delivery`: `endpoint` | `handoff`), `form_submit_error`,
+`thank_you_view` and `contact_click`. Each carries `form_id`, `form_location` and, once it
+exists, `request_id`.
 
 ## Work
 
-`src/data/projects.json` is the one list of delivered projects, held in the order they are
-shown. `featured: true` puts a project in the home-page band (the first six); every project
-appears on `/work/`. A project with an empty `link` renders as a plain tile instead of a
-dead link.
+`src/data/projects.json` is the one list of delivered projects. `src/lib/projects.js` orders it,
+so adding a project never needs a manual re-shuffle:
 
-Each project names the BRXEL services it demonstrates by their `services.json` id, and
-`src/lib/projects.js` resolves those to the service's `short` label — so the catalogue stays
-the one source for what a service is called, and an unknown id fails the build rather than
-dropping a tag silently.
+- Disciplines are shown in the order identity, social, web, print.
+- Inside a discipline: `featured: true` first, then the projects with the most to show (a full
+  social gallery or a live site), then file order.
+- The "All" view on `/work/` and the home page take one project from each discipline in turn,
+  so the grid never shows a run of the same kind of work. `/work/` loads twelve at a time.
+- `/work/#work-social` (or `-identity`, `-web`, `-print`) opens the page already filtered.
 
-The list started as a snapshot of the itsak.tech portfolio API, not a live feed. Order,
-categories and cover art come from there; the summaries were rewritten to describe the work
-in the same terms as the service catalogue. Covers are square 1000x1000 WebP shots in
-`public/images/work/`, named after the project id.
+A web project with an empty `link` renders as a plain tile instead of a dead link; social
+projects open their gallery at `/work/social/<id>/`.
 
 ## Brand assets
 
