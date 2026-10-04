@@ -6,10 +6,31 @@ export const TIMELINES = ["في أقرب وقت", "خلال شهر", "من شه�
 
 export const NOT_SURE = "لست متأكدًا";
 
-/** A service title without the repeated "تصميم" prefix, so the choices scan quickly two per row. */
-export const serviceOption = (service) => service.title.replace(/^تصميم\s+/, "");
+/**
+ * The form asks for a kind of work, not one of every service: a few broad
+ * choices are quicker to answer, and the scope gets pinned down in the quote.
+ * Every service in services.json belongs to exactly one group.
+ */
+export const SERVICE_GROUPS = [
+  { label: "هوية بصرية", services: ["brand-identity"] },
+  { label: "سوشيال ميديا", services: ["social-media", "motion"] },
+  { label: "موقع أو متجر", services: ["web-ui", "salla-store", "zid-store"] },
+  { label: "مطبوعات وتغليف", services: ["print", "packaging"] },
+  { label: "عروض تقديمية", services: ["presentations"] },
+];
 
-export const SERVICE_OPTIONS = [...services.map(serviceOption), NOT_SURE];
+services.forEach((service) => {
+  const homes = SERVICE_GROUPS.filter((group) => group.services.includes(service.id));
+  if (homes.length !== 1) {
+    throw new Error(`Service "${service.id}" must belong to exactly one form group (found ${homes.length}).`);
+  }
+});
+
+/** The form choice a service falls under, used to preselect it on the service's own page. */
+export const serviceOption = (service) =>
+  SERVICE_GROUPS.find((group) => group.services.includes(service.id)).label;
+
+export const SERVICE_OPTIONS = [...SERVICE_GROUPS.map((group) => group.label), NOT_SURE];
 
 export const MIN_DETAILS = 20;
 export const MAX_DETAILS = 1500;
@@ -74,6 +95,7 @@ export function buildMessage(values, requestId) {
   if (values.phone.trim()) lines.push(`رقم الجوال: ${values.phone.trim()}`);
 
   lines.push("", `الخدمة المطلوبة: ${values.service}`);
+  if (values.topic) lines.push(`أُرسل من صفحة: ${values.topic}`);
   if (values.timeline) lines.push(`الإطار الزمني: ${values.timeline}`);
 
   lines.push("", "تفاصيل المشروع:", values.details.trim());

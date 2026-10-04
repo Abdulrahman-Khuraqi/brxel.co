@@ -39,7 +39,7 @@ All routes are prerendered at build time.
 | Concern | Where |
 |---|---|
 | Brand and contact facts | `src/lib/site.js` |
-| Services and packages | `src/data/services.json` (read via `src/lib/services.js`); adding a service there adds its page, sitemap entry, footer link and form choice |
+| Services and packages | `src/data/services.json` (read via `src/lib/services.js`); adding a service there adds its page, sitemap entry and footer link (add its id to a `SERVICE_GROUPS` entry in `src/lib/contact.js` too, or the build stops) |
 | Delivered projects | `src/data/projects.json` (read via `src/lib/projects.js`) |
 | Policy text | `src/data/policies.json` (read via `src/lib/legal.js`) |
 | Enquiry schema (Zod), steps, request id, submission | `src/lib/contact.js` |
@@ -76,11 +76,14 @@ The enquiry form (`src/components/contact/EnquiryForm.js`) closes every main pag
 on React Hook Form + Zod + shadcn/ui (`src/components/ui/form.js`, `sonner.js`) and runs in
 three steps — service, project, contact details — with a progress bar, validation as you type,
 and "next"/"submit" buttons that stay disabled until their step is valid.
+Step one offers five broad kinds of work (`SERVICE_GROUPS`) rather than every service; on a
+service page the form opens on that service's group.
 
 On submit it creates a request id (`BRX-YYMMDD-XXXX`) and redirects to `/thank-you/?id=…`.
 
 - **With `NEXT_PUBLIC_FORM_ENDPOINT` set**, the enquiry is POSTed there as JSON
-  (`requestId`, `service`, `timeline`, `details`, `name`, `email`, `phone`, `message`, `source`)
+  (`requestId`, `service`, `timeline`, `details`, `name`, `email`, `phone`, `message`, `source`, and
+  `topic` — the service page it was sent from, when there is one)
   and the thank-you page confirms it was received.
 - **Without it** (the current state, until the brxel.co mailbox is set up), the thank-you page
   asks the visitor to send the prepared message through WhatsApp or email, so no enquiry is lost.

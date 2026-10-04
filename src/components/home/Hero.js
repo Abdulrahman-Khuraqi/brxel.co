@@ -35,9 +35,9 @@ export default function Hero() {
 
           <Reveal delay={80}>
             <h1 className="mt-6 text-display font-bold text-ice">
-              فنٌّ في
+              تصميم يُطلق
               <span className="flex items-center gap-[0.15em]">
-                <span className="headline-accent">كل بكسل</span>
+                <span className="headline-accent">علامتك</span>
                 <Spark className="h-[0.5em] w-[0.5em] shrink-0 text-brand" />
               </span>
             </h1>
@@ -45,8 +45,8 @@ export default function Hero() {
 
           <Reveal delay={160}>
             <p className="mt-5 max-w-xl text-lead text-ice-muted">
-              استوديو تصميم جرافيكي: هوية بصرية، سوشيال ميديا، مطبوعات، وواجهات مواقع ومتاجر. نطاق عمل مكتوب، وملفات
-              تسليم تملكها بالكامل.
+              من الشعار إلى المنشور إلى متجرك على سلة أو زد: نظام بصري واحد لكل ما تظهر به علامتك، بنطاق مكتوب قبل
+              البدء وملفات تملكها بالكامل.
             </p>
           </Reveal>
 
@@ -56,7 +56,7 @@ export default function Hero() {
                 href="#contact"
                 className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-brand px-6 text-base font-bold text-[#150C09] transition hover:bg-brand-bright motion-reduce:transition-none"
               >
-                احصل على عرضك
+                اطلب عرض سعر
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               </Link>
               <Link

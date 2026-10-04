@@ -109,7 +109,7 @@ export default async function ServicePage({ params }) {
         <Band key={index} service={service} tone={index % 2 === 0 ? "light" : "dark"} />
       ))}
 
-      <ContactSection location={`service-${service.id}`} service={serviceOption(service)} />
+      <ContactSection location={`service-${service.id}`} service={serviceOption(service)} topic={service.title} />
     </>
   );
 }

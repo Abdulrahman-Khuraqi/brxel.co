@@ -135,9 +135,11 @@ function Progress({ step }) {
  * as the visitor types with React Hook Form + Zod. "Next" and "submit" stay
  * disabled until their step is valid. On success the visitor lands on
  * /thank-you/ with the request id; every stage is pushed to the data layer.
- * `service` preselects the first answer, so a service page opens on its own service.
+ * `service` preselects the first answer, so a service page opens on its own
+ * group; `topic` (that page's service) rides along with the request as long as
+ * the visitor keeps that choice.
  */
-export default function EnquiryForm({ location = "page", service = "" }) {
+export default function EnquiryForm({ location = "page", service = "", topic = "" }) {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const headingRef = useRef(null);
@@ -186,7 +188,8 @@ export default function EnquiryForm({ location = "page", service = "" }) {
     setStep((value) => Math.max(value - 1, 0));
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (values) => {
+    const data = topic && values.service === service ? { ...values, topic } : values;
     const requestId = createRequestId();
     const message = buildMessage(data, requestId);
     const analytics = {

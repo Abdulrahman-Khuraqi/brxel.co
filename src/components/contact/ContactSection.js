@@ -18,6 +18,7 @@ export default function ContactSection({
   location = "footer",
   title = "لنصنع شيئًا يُشبهك",
   service = "",
+  topic = "",
 }) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="relative isolate scroll-mt-20 overflow-hidden border-t border-hairline bg-void">
@@ -66,7 +67,7 @@ export default function ContactSection({
         </Reveal>
 
         <Reveal delay={80}>
-          <EnquiryForm location={location} service={service} />
+          <EnquiryForm location={location} service={service} topic={topic} />
         </Reveal>
       </div>
     </section>
