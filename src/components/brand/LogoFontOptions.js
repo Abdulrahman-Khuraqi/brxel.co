@@ -1,3 +1,5 @@
+import OptionNumber from "@/components/brand/OptionNumber";
+
 const fontOptions = [
   {
     name: "Nexa",
@@ -10,15 +12,15 @@ const fontOptions = [
 ];
 
 const nexaWeights = [
-  { weight: 100, ar: "رفيع", en: "Thin" },
-  { weight: 200, ar: "خفيف جدًا", en: "ExtraLight" },
-  { weight: 300, ar: "خفيف", en: "Light" },
-  { weight: 400, ar: "عادي", en: "Regular" },
-  { weight: 500, ar: "متوسط", en: "Book" },
-  { weight: 700, ar: "عريض", en: "Bold" },
-  { weight: 800, ar: "عريض جدًا", en: "ExtraBold" },
-  { weight: 900, ar: "ثقيل", en: "Heavy" },
-  { weight: 950, ar: "أسود", en: "Black" },
+  { no: 72, weight: 100, ar: "رفيع", en: "Thin" },
+  { no: 73, weight: 200, ar: "خفيف جدًا", en: "ExtraLight" },
+  { no: 74, weight: 300, ar: "خفيف", en: "Light" },
+  { no: 75, weight: 400, ar: "عادي", en: "Regular" },
+  { no: 76, weight: 500, ar: "متوسط", en: "Book" },
+  { no: 77, weight: 700, ar: "عريض", en: "Bold" },
+  { no: 78, weight: 800, ar: "عريض جدًا", en: "ExtraBold" },
+  { no: 79, weight: 900, ar: "ثقيل", en: "Heavy" },
+  { no: 80, weight: 950, ar: "أسود", en: "Black" },
 ];
 
 export default function LogoFontOptions({ locale = "ar" }) {
@@ -61,7 +63,10 @@ export default function LogoFontOptions({ locale = "ar" }) {
           {nexaWeights.map((item) => (
             <figure key={item.weight} className="rounded-xl border border-white/10 bg-white/[0.025] px-4 py-3">
               <figcaption className="flex items-center justify-between gap-2 text-xs text-ice-muted">
-                <span>{item[isEnglish ? "en" : "ar"]}</span>
+                <span className="flex items-center gap-2">
+                  <OptionNumber no={item.no} />
+                  {item[isEnglish ? "en" : "ar"]}
+                </span>
                 <span className="latin">{item.weight}</span>
               </figcaption>
               <p lang="en" dir="ltr" className="mt-2 whitespace-nowrap text-3xl leading-tight tracking-[0.03em] text-ice" style={{ fontFamily: '"Nexa Trial", sans-serif', fontWeight: item.weight }}>

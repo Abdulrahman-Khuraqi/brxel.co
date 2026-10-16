@@ -1,11 +1,15 @@
 import { Type } from "lucide-react";
-import PageHeader from "@/components/layout/PageHeader";
 import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
 import BrandPalette from "@/components/brand/BrandPalette";
 import LogoFontOptions from "@/components/brand/LogoFontOptions";
+import LogoOptionsHero from "@/components/brand/LogoOptionsHero";
 import LogoShowcase from "@/components/brand/LogoShowcase";
-import Logo from "@/components/brand/BrxelLogo";
+import LogoStudy from "@/components/brand/LogoStudy";
+import LogoOptions66 from "@/components/brand/LogoOptions66";
+import LogoJourney from "@/components/brand/LogoJourney";
+import LogoReferences from "@/components/brand/LogoReferences";
+import BrandFolder from "@/components/brand/BrandFolder";
 
 export const metadata = {
   robots: { index: false, follow: false },
@@ -23,33 +27,7 @@ const WEIGHTS = [
 export default function BrandPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="بناء شعار BRXEL"
-        title="عنصر العلامة"
-        lead="BRXEL مستوحى من Brand Element، على غرار Pixel (Picture Element). يوجّه هذا المعنى بناء شعار يجمع الاسم والرمز واللون والخط في علامة واحدة."
-      >
-        <div className="mx-auto mt-8 max-w-2xl">
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="flex min-h-24 flex-col items-center justify-center gap-1 rounded-2xl border border-white/10 bg-[#0C0705]/70 px-5 py-4">
-              <span className="text-[11px] font-semibold tracking-wide text-[#C9BCAC]">عنصر الصورة</span>
-              <span className="text-2xl font-bold tracking-tight text-[#F7F1E6]">بيكسل</span>
-            </div>
-            <div className="flex min-h-24 flex-col items-center justify-center gap-1 rounded-2xl border border-brand/35 bg-[#0C0705]/70 px-5 py-4 shadow-[0_12px_40px_-24px_rgba(232,90,36,0.8)]">
-              <span className="text-[11px] font-semibold tracking-wide text-[#F2A12C]">عنصر العلامة</span>
-              <span className="mt-1 text-[#F7F1E6]" dir="ltr">
-                <Logo className="h-6 w-auto" />
-              </span>
-            </div>
-          </div>
-          <ul aria-label="عناصر الهوية" className="mt-4 flex flex-wrap justify-center gap-2">
-            {["الاسم", "الرمز", "اللون", "الخط"].map((element) => (
-              <li key={element} className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-[#F7F1E6]/85">
-                {element}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </PageHeader>
+      <LogoOptionsHero locale="ar" />
 
       <Section
         eyebrow="الشعار"
@@ -61,6 +39,39 @@ export default function BrandPage() {
         <Reveal>
           <LogoShowcase locale="ar" />
         </Reveal>
+      </Section>
+
+      <Section
+        id="core"
+        eyebrow="خيار أول · جدران متساوية"
+        title="النواة: الداخل يتبع الخارج"
+        lead="حروف كبيرة ثقيلة على شبكة من 17 وحدة. كل فراغ داخلي يكرر انحناءة حرفه، فتبقى الجدران متساوية، وكل زاوية مستديرة تتجه نحو الـX البرتقالي."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <LogoStudy study="core" locale="ar" />
+      </Section>
+
+      <Section
+        id="blade"
+        eyebrow="خيار ثانٍ · أكثر قوة"
+        title="النصل: كل حرف قطعه الخط البرتقالي"
+        lead="حروف كبيرة ثقيلة على الشبكة نفسها. الخط البرتقالي نصلٌ يخرج من الكلمة فوق الحروف وتحتها، وكل حرف يحمل أثره: زاويتان مقطوعتان بزاوية &lrm;66° توازيانه."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <LogoStudy study="blade" locale="ar" />
+      </Section>
+
+      <Section
+        id="options"
+        eyebrow="خيارات جديدة"
+        title="خيارات جديدة على زاوية &lrm;66°"
+        lead="الزاوية مأخوذة من الحرف B نفسه: رمزه في ASCII هو 66. نستخدم الرقم زاويةً فقط، ولا نرسمه شكلًا. هذه خيارات للمراجعة، والشعار المعتمد أعلاه باقٍ كما هو."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <LogoOptions66 locale="ar" />
       </Section>
 
       <Section
@@ -96,7 +107,7 @@ export default function BrandPage() {
       <Section
         eyebrow="هندسة الشعار"
         title="كل القصّات تتجه نحو الـX"
-        lead="زوايا الحروف كلها 45°: الـB والـR تُقصّ من اليمين، والـE والـL من اليسار، فتلتقي الكلمة عند الـX. وقطرا الـX بزاوية 50° ليبقى عرضه قريبًا من عرض بقية الحروف."
+        lead="زوايا الحروف كلها &lrm;45°: الـB والـR تُقصّ من اليمين، والـE والـL من اليسار، فتلتقي الكلمة عند الـX. وقطرا الـX بزاوية &lrm;50° ليبقى عرضه قريبًا من عرض بقية الحروف."
         align="start"
         className="border-y border-hairline bg-navy"
       >
@@ -105,7 +116,7 @@ export default function BrandPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/brand/logo/brxel-logo-construction.svg"
-              alt="شبكة بناء شعار BRXEL: قصّات 45° عند الـB والـE، وقطر الـX بزاوية 50°."
+              alt="شبكة بناء شعار BRXEL: قصّات &lrm;45° عند الـB والـE، وقطر الـX بزاوية &lrm;50°."
               width={1600}
               height={560}
               className="h-auto w-full"
@@ -129,6 +140,26 @@ export default function BrandPage() {
             القيم على ارتفاع حرف يساوي 100 وحدة. المسافات بين الحروف محسوبة بصريًا لا بالأرقام، حتى تبدو متساوية رغم اختلاف أشكال الحروف المفتوحة مثل الـX والـE.
           </p>
         </Reveal>
+      </Section>
+
+      <Section
+        eyebrow="مسار الشعار"
+        title="من اتجاه البيكسل إلى الشعار المعتمد"
+        lead="أربع مراحل مرّ بها الشعار، مرتّبة من الأقدم إلى الأحدث، مع ما تغيّر في كل مرحلة والملفات التي تخصّها في مجلد العمل."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <LogoJourney locale="ar" />
+      </Section>
+
+      <Section
+        eyebrow="المراجع"
+        title="لوحة الإلهام"
+        lead="44 مرجعًا جُمعت أثناء العمل على الشعار: 15 مختارة، و29 أخرى. تحتها ما يتكرر فيها ويفسّر اتجاه الشعار الحالي."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <LogoReferences locale="ar" />
       </Section>
 
       <Section
@@ -203,6 +234,18 @@ export default function BrandPage() {
         className="border-y border-hairline bg-navy"
       >
         <LogoFontOptions locale="ar" />
+      </Section>
+
+      <Section
+        eyebrow="مجلد العمل"
+        title="كل ما في مجلد الهوية"
+        lead="جرد لمحتويات مجلد brand-brinding: أين يوجد كل ملف، وما الذي يُستخدم منه اليوم."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <Reveal>
+          <BrandFolder locale="ar" />
+        </Reveal>
       </Section>
     </>
   );

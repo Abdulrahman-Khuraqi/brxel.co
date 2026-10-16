@@ -1,10 +1,14 @@
 import BrandPalette from "@/components/brand/BrandPalette";
-import PageHeader from "@/components/layout/PageHeader";
 import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import LogoFontOptions from "@/components/brand/LogoFontOptions";
+import LogoOptionsHero from "@/components/brand/LogoOptionsHero";
 import LogoShowcase from "@/components/brand/LogoShowcase";
-import Logo from "@/components/brand/BrxelLogo";
+import LogoStudy from "@/components/brand/LogoStudy";
+import LogoOptions66 from "@/components/brand/LogoOptions66";
+import LogoJourney from "@/components/brand/LogoJourney";
+import LogoReferences from "@/components/brand/LogoReferences";
+import BrandFolder from "@/components/brand/BrandFolder";
 
 export const metadata = {
   robots: { index: false, follow: false },
@@ -15,33 +19,7 @@ export const metadata = {
 export default function BrandPageEnglish() {
   return (
     <div lang="en" dir="ltr">
-      <PageHeader
-        eyebrow="BRXEL logo design"
-        title="A brand element"
-        lead="BRXEL is inspired by “Brand Element,” echoing “Pixel” (picture element). That idea guides a logo combining the name, symbol, color, and type into one mark."
-      >
-        <div className="mx-auto mt-8 max-w-2xl">
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="flex min-h-24 flex-col items-center justify-center gap-1 rounded-2xl border border-white/10 bg-[#0C0705]/70 px-5 py-4">
-              <span className="latin text-[11px] font-semibold tracking-[0.22em] text-[#C9BCAC]">PICTURE ELEMENT</span>
-              <span className="latin text-2xl font-bold tracking-tight text-[#F7F1E6]">PIXEL</span>
-            </div>
-            <div className="flex min-h-24 flex-col items-center justify-center gap-1 rounded-2xl border border-brand/35 bg-[#0C0705]/70 px-5 py-4 shadow-[0_12px_40px_-24px_rgba(232,90,36,0.8)]">
-              <span className="latin text-[11px] font-semibold tracking-[0.22em] text-[#F2A12C]">BRAND ELEMENT</span>
-              <span className="mt-1 text-[#F7F1E6]">
-                <Logo className="h-6 w-auto" />
-              </span>
-            </div>
-          </div>
-          <ul aria-label="Identity elements" className="mt-4 flex flex-wrap justify-center gap-2">
-            {["Name", "Symbol", "Color", "Type"].map((element) => (
-              <li key={element} className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-[#F7F1E6]/85">
-                {element}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </PageHeader>
+      <LogoOptionsHero locale="en" />
 
       <Section
         eyebrow="The logo"
@@ -53,6 +31,39 @@ export default function BrandPageEnglish() {
         <Reveal>
           <LogoShowcase locale="en" />
         </Reveal>
+      </Section>
+
+      <Section
+        id="core"
+        eyebrow="A first option · even walls"
+        title="Core: the inside follows the outside"
+        lead="Heavy capitals on a 17-unit grid. Every inner space repeats the curve of its letter, so the walls stay even, and every rounded corner turns toward the Ember X."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <LogoStudy study="core" locale="en" />
+      </Section>
+
+      <Section
+        id="blade"
+        eyebrow="A second option · more power"
+        title="Blade: every letter cut by the Ember stroke"
+        lead="Heavy capitals on the same grid. The Ember stroke is a blade that runs out of the word, above and below the letters, and every letter carries its mark: two corners cut at 66°, parallel to it."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <LogoStudy study="blade" locale="en" />
+      </Section>
+
+      <Section
+        id="options"
+        eyebrow="New options"
+        title="New options on the 66° angle"
+        lead="The angle comes from the letter B itself: it is 66 in ASCII. The number is used as an angle only and is never drawn as a shape. These are options for review; the approved logo above stays as it is."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <LogoOptions66 locale="en" />
       </Section>
 
       <Section
@@ -124,6 +135,26 @@ export default function BrandPageEnglish() {
       </Section>
 
       <Section
+        eyebrow="Logo journey"
+        title="From the pixel direction to the approved mark"
+        lead="The four stages the logo went through, oldest first, with what changed at each one and the files behind it in the working folder."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <LogoJourney locale="en" />
+      </Section>
+
+      <Section
+        eyebrow="References"
+        title="The inspiration board"
+        lead="44 references collected while working on the logo: 15 picks and 29 more. Below them, what they share and how it explains the current direction."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <LogoReferences locale="en" />
+      </Section>
+
+      <Section
         eyebrow="Logo color"
         title="Logo colors and their roles"
         lead="These colors define the logo’s primary and supporting versions, with clear contrast on light and dark backgrounds."
@@ -143,6 +174,18 @@ export default function BrandPageEnglish() {
         className="border-y border-hairline bg-navy"
       >
         <LogoFontOptions locale="en" />
+      </Section>
+
+      <Section
+        eyebrow="Working folder"
+        title="Everything in the brand folder"
+        lead="An inventory of the brand-brinding folder: where each file lives and what is in use today."
+        align="start"
+        className="border-y border-hairline bg-navy"
+      >
+        <Reveal>
+          <BrandFolder locale="en" />
+        </Reveal>
       </Section>
     </div>
   );
